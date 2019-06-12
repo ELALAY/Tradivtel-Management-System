@@ -43,49 +43,145 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="249" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="Azimut_Label" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="403" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                      <Component id="Code_Site_Label" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="Code_Site_TextField" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="Code_Site_Label" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="Adress_Label" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="Adress_TextField" alignment="0" min="-2" pref="183" max="-2" attributes="0"/>
+                                  <Component id="Code_Site_TextField" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="Latitude_Label" min="-2" pref="59" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="Latitude_TextField" min="-2" pref="50" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="Longitude_Label" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
+                                          <Component id="Client_Lable" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="Client_TextFlied" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="Longitude_TextField" min="-2" pref="50" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace pref="20" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jComboBox1" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="Azimut_TextFlied" min="-2" pref="100" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="Farend_Label" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                      <Component id="Farend__TextFlied" min="-2" pref="100" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="Code_Site_Label2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jComboBox2" min="-2" pref="100" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="271" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="Main_Title_Label" min="-2" pref="388" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+              <Component id="Main_Title_Label" min="-2" pref="38" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Code_Site_TextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Code_Site_Label" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Client_Lable" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Client_TextFlied" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="306" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="Adress_Label" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Adress_TextField" alignment="3" min="-2" pref="68" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="Longitude_Label" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Longitude_TextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="Latitude_Label" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Latitude_TextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="Code_Site_Label2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="Azimut_Label" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="Farend_Label" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Farend__TextFlied" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="Azimut_TextFlied" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="114" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="Main_Title_Label">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Gill Sans MT" size="24" style="3"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Informations Relatives au Site"/>
         <Property name="verticalTextPosition" type="int" value="1"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Code_Site_TextField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Code_Site_TextFieldActionPerformed"/>
       </Events>
@@ -94,6 +190,96 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Code du Site"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Adress_Label">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Adress"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="Adress_TextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="Longitude_Label">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="2"/>
+        <Property name="text" type="java.lang.String" value="Longitude"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="Longitude_TextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="Latitude_Label">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="2"/>
+        <Property name="text" type="java.lang.String" value="Latitude"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="Latitude_TextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="Client_Lable">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Client"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBox1">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="Client_TextFlied">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Type de Site"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Code_Site_Label2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Technology"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBox2">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox2ActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Farend_Label">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Farend"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="Farend__TextFlied">
+    </Component>
+    <Component class="javax.swing.JLabel" name="Azimut_Label">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Azimut"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="Azimut_TextFlied">
     </Component>
   </SubComponents>
 </Form>

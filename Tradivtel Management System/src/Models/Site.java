@@ -159,5 +159,5 @@ public class Site {
         return "Site{" + "Code_Site=" + Code_Site + ", Client=" + Client + ", Farend=" + Farend + ", Azimut=" + Azimut + ", Adress=" + Adress + ", Longitude=" + Longitude + ", Latitude=" + Latitude + ", Site_Type=" + Site_Type + ", Site_Metrage=" + Site_Metrage + ", Technology=" + Technology + ", Missing_Data=" + Missing_Data + ", Travaux=" + Travaux + ", Integration=" + Integration + ", Acceptance=" + Acceptance + '}';
     }
     
-    
+        
 }

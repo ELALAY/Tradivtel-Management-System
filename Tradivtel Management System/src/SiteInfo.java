@@ -27,9 +27,25 @@ public class SiteInfo extends javax.swing.JFrame {
     private void initComponents() {
 
         jInternalFrame1 = new javax.swing.JInternalFrame();
-        jLabel1 = new javax.swing.JLabel();
+        Main_Title_Label = new javax.swing.JLabel();
         Code_Site_TextField = new javax.swing.JTextField();
         Code_Site_Label = new javax.swing.JLabel();
+        Adress_Label = new javax.swing.JLabel();
+        Adress_TextField = new javax.swing.JTextField();
+        Longitude_Label = new javax.swing.JLabel();
+        Longitude_TextField = new javax.swing.JTextField();
+        Latitude_Label = new javax.swing.JLabel();
+        Latitude_TextField = new javax.swing.JTextField();
+        Client_Lable = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        Client_TextFlied = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        Code_Site_Label2 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        Farend_Label = new javax.swing.JLabel();
+        Farend__TextFlied = new javax.swing.JTextField();
+        Azimut_Label = new javax.swing.JLabel();
+        Azimut_TextFlied = new javax.swing.JTextField();
 
         jInternalFrame1.setVisible(true);
 
@@ -46,10 +62,11 @@ public class SiteInfo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Informations Relatives au Site");
-        jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        Main_Title_Label.setFont(new java.awt.Font("Gill Sans MT", 3, 24)); // NOI18N
+        Main_Title_Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Main_Title_Label.setText("Informations Relatives au Site");
+        Main_Title_Label.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
-        Code_Site_TextField.setText("jTextField1");
         Code_Site_TextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Code_Site_TextFieldActionPerformed(evt);
@@ -58,32 +75,134 @@ public class SiteInfo extends javax.swing.JFrame {
 
         Code_Site_Label.setText("Code du Site");
 
+        Adress_Label.setText("Adress");
+
+        Longitude_Label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Longitude_Label.setText("Longitude");
+
+        Latitude_Label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Latitude_Label.setText("Latitude");
+
+        Client_Lable.setText("Client");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Type de Site");
+
+        Code_Site_Label2.setText("Technology");
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+
+        Farend_Label.setText("Farend");
+
+        Azimut_Label.setText("Azimut");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(249, 249, 249)
-                        .addComponent(jLabel1))
+                        .addComponent(Azimut_Label)
+                        .addGap(403, 403, 403))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(Code_Site_Label)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Code_Site_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(271, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Code_Site_Label)
+                            .addComponent(Adress_Label)
+                            .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Adress_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Code_Site_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(Latitude_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(Latitude_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(Longitude_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Client_Lable))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(Client_TextFlied, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Longitude_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addContainerGap(20, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Azimut_TextFlied, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(93, 93, 93)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(Farend_Label)
+                                        .addGap(31, 31, 31)
+                                        .addComponent(Farend__TextFlied, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(Code_Site_Label2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Main_Title_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(48, 48, 48)
+                .addGap(42, 42, 42)
+                .addComponent(Main_Title_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Code_Site_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Code_Site_Label))
-                .addContainerGap(306, Short.MAX_VALUE))
+                    .addComponent(Code_Site_Label)
+                    .addComponent(Client_Lable)
+                    .addComponent(Client_TextFlied, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Adress_Label)
+                        .addComponent(Adress_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Longitude_Label)
+                            .addComponent(Longitude_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Latitude_Label)
+                            .addComponent(Latitude_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Code_Site_Label2)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Azimut_Label)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Farend_Label)
+                        .addComponent(Farend__TextFlied, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Azimut_TextFlied, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
         pack();
@@ -92,6 +211,14 @@ public class SiteInfo extends javax.swing.JFrame {
     private void Code_Site_TextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Code_Site_TextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Code_Site_TextFieldActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,9 +256,25 @@ public class SiteInfo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Adress_Label;
+    private javax.swing.JTextField Adress_TextField;
+    private javax.swing.JLabel Azimut_Label;
+    private javax.swing.JTextField Azimut_TextFlied;
+    private javax.swing.JLabel Client_Lable;
+    private javax.swing.JTextField Client_TextFlied;
     private javax.swing.JLabel Code_Site_Label;
+    private javax.swing.JLabel Code_Site_Label2;
     private javax.swing.JTextField Code_Site_TextField;
+    private javax.swing.JLabel Farend_Label;
+    private javax.swing.JTextField Farend__TextFlied;
+    private javax.swing.JLabel Latitude_Label;
+    private javax.swing.JTextField Latitude_TextField;
+    private javax.swing.JLabel Longitude_Label;
+    private javax.swing.JTextField Longitude_TextField;
+    private javax.swing.JLabel Main_Title_Label;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }
