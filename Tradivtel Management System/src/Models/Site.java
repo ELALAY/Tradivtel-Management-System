@@ -14,6 +14,7 @@ public class Site {
     private String Client;
     private String Farend;
     private String Azimut;
+    private String City;
     private String Adress;
     private String Longitude; //coordinates to be modified
     private String Latitude;
@@ -24,12 +25,27 @@ public class Site {
     private Travaux Travaux;
     private Integration Integration;
     private Acceptance Acceptance;
-    
-    public Site(String Code_Site, String Client, String Farend, String Azimut, String Adress, String Longitude, String Latitude, String Site_Type, double Site_Metrage, String Technology, String Missing_Data, Travaux Travaux, Integration Integration, Acceptance Acceptance) {
+
+    public Site(String Code_Site, String Client, String Farend, String Azimut, String City, String Adress, String Longitude, String Latitude, String Site_Type, String Technology, double Site_Metrage) {
         this.Code_Site = Code_Site;
         this.Client = Client;
         this.Farend = Farend;
         this.Azimut = Azimut;
+        this.City = City;
+        this.Adress = Adress;
+        this.Longitude = Longitude;
+        this.Latitude = Latitude;
+        this.Site_Type = Site_Type;
+        this.Technology = Technology;
+        this.Site_Metrage = Site_Metrage;
+    }
+    
+    public Site(String Code_Site, String Client, String Farend, String Azimut, String City, String Adress, String Longitude, String Latitude, String Site_Type, double Site_Metrage, String Technology, String Missing_Data, Travaux Travaux, Integration Integration, Acceptance Acceptance) {
+        this.Code_Site = Code_Site;
+        this.Client = Client;
+        this.Farend = Farend;
+        this.Azimut = Azimut;
+        this.City = City;
         this.Adress = Adress;
         this.Longitude = Longitude;
         this.Latitude = Latitude;
@@ -41,7 +57,8 @@ public class Site {
         this.Integration = Integration;
         this.Acceptance = Acceptance;
     }
-
+    
+    
     public String getCode_Site() {
         return Code_Site;
     }
@@ -114,6 +131,14 @@ public class Site {
         this.Site_Metrage = Site_Metrage;
     }
 
+    public String getCity() {
+        return City;
+    }
+
+    public void setCity(String City) {
+        this.City = City;
+    }
+    
     public String getTechnology() {
         return Technology;
     }
