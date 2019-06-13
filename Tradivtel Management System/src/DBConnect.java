@@ -13,7 +13,7 @@
 import java.sql.*;
 
 public class DBConnect {
-    private Connection con;
+    private Connection mycon;
     private Statement st;
     private ResultSet rs;
     
