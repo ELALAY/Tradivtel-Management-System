@@ -50,6 +50,8 @@ public class SiteInfo extends javax.swing.JFrame {
         Clear_Button = new javax.swing.JButton();
         Adress_Label1 = new javax.swing.JLabel();
         Adress_TextField1 = new javax.swing.JTextField();
+        Metrage_label = new javax.swing.JLabel();
+        Metrage_TextFlied = new javax.swing.JTextField();
 
         jInternalFrame1.setVisible(true);
 
@@ -117,6 +119,8 @@ public class SiteInfo extends javax.swing.JFrame {
 
         Adress_Label1.setText("Adress");
 
+        Metrage_label.setText("Metrage");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -166,7 +170,8 @@ public class SiteInfo extends javax.swing.JFrame {
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(Latitude_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(Code_Site_Label2)
-                                                    .addComponent(Farend_Label))
+                                                    .addComponent(Farend_Label)
+                                                    .addComponent(Metrage_label))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(Latitude_TextField)
@@ -182,6 +187,10 @@ public class SiteInfo extends javax.swing.JFrame {
                 .addGap(51, 51, 51)
                 .addComponent(Main_Title_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Metrage_TextFlied, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,10 +230,14 @@ public class SiteInfo extends javax.swing.JFrame {
                         .addComponent(Farend__TextFlied, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Farend_Label))
                     .addComponent(Azimut_TextFlied, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Save_Button)
-                    .addComponent(Clear_Button))
+                    .addComponent(Metrage_TextFlied, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Metrage_label))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Clear_Button)
+                    .addComponent(Save_Button))
                 .addContainerGap())
         );
 
@@ -298,6 +311,8 @@ public class SiteInfo extends javax.swing.JFrame {
     private javax.swing.JLabel Longitude_Label;
     private javax.swing.JTextField Longitude_TextField;
     private javax.swing.JLabel Main_Title_Label;
+    private javax.swing.JTextField Metrage_TextFlied;
+    private javax.swing.JLabel Metrage_label;
     private javax.swing.JButton Save_Button;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
