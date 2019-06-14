@@ -138,6 +138,11 @@ public class SiteInfo extends javax.swing.JFrame {
         Save_Button.setText("Enregistrer");
 
         Clear_Button.setText("Effacer");
+        Clear_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Clear_ButtonActionPerformed(evt);
+            }
+        });
 
         Adress_Label1.setText("Adress");
 
@@ -327,6 +332,25 @@ public class SiteInfo extends javax.swing.JFrame {
     private void Ville_TextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ville_TextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Ville_TextFieldActionPerformed
+
+    private void Clear_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clear_ButtonActionPerformed
+        // TODO add your handling code here:
+        Clear_Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                Code_Site_TextField.setText("");
+                Client_TextFlied.setText("");
+                Ville_TextField.setText("");
+                Longitude_TextField.setText("");
+                Latitude_TextField.setText("");
+                Adress_TextField.setText("");
+                Azimut_TextFlied.setText("");
+                Farend__TextFlied.setText("");
+                
+            }
+        });
+    }//GEN-LAST:event_Clear_ButtonActionPerformed
 
     /**
      * @param args the command line arguments

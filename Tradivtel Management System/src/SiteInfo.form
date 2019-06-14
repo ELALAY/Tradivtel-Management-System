@@ -328,6 +328,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Effacer"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Clear_ButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="Adress_Label1">
       <Properties>
