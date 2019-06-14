@@ -136,6 +136,11 @@ public class SiteInfo extends javax.swing.JFrame {
         Azimut_Label.setText("Azimut");
 
         Save_Button.setText("Enregistrer");
+        Save_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Save_ButtonActionPerformed(evt);
+            }
+        });
 
         Clear_Button.setText("Effacer");
         Clear_Button.addActionListener(new java.awt.event.ActionListener() {
@@ -351,6 +356,10 @@ public class SiteInfo extends javax.swing.JFrame {
             }
         });
     }//GEN-LAST:event_Clear_ButtonActionPerformed
+
+    private void Save_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Save_ButtonActionPerformed
+            // TODO add your handling code here:
+    }//GEN-LAST:event_Save_ButtonActionPerformed
 
     /**
      * @param args the command line arguments
