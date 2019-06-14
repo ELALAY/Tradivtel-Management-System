@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import Models.Site;
+import java.sql.SQLException;
 
 /**
  *
@@ -38,7 +39,7 @@ public class SiteCollection {
         }
         return obj;
     }
-    
+    /*
     public void addSiteToDB(Site site, int i){
         sites.add(site);
         
@@ -60,5 +61,23 @@ public class SiteCollection {
                 System.out.println(e);
             }
         }
+    }*/
+    
+    public ResultSet getSingleSiteInfo(String code_site){
+        try{
+            String query = "SELECT * FROM `sites` WHERE Code_Site = 'ASI367'";
+            rs = myStmt.executeQuery(query);
+            System.out.println("Recods from db: ");
+            
+                String cde_site = rs.getString("Code Site");
+                String client  = rs.getString("Client");
+                
+                System.out.println("Name: " + cde_site+ " Age: "+client);
+            
+        } catch(SQLException e){
+            System.out.print("error: " + e);
+        }
+        return rs;
     }
+    
 }

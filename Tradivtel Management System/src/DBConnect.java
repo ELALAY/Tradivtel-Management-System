@@ -15,16 +15,13 @@ import java.sql.*;
 public class DBConnect {
     private Connection mycon;
     private Statement st;
-    private ResultSet rs;
     
     public DBConnect(){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             
-            mycon = DriverManager.getConnection("jdbc:mysql://localhost:3306/peopletest", "root", "");
+            mycon = DriverManager.getConnection("jdbc:mysql://localhost:3306/sites", "root", "");
             st = mycon.createStatement();
-            
-            
             
         } catch(ClassNotFoundException | SQLException e){
             System.out.print("error: " + e);

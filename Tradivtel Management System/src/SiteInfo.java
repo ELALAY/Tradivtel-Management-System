@@ -1,3 +1,9 @@
+
+import Models.SiteCollection;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -52,6 +58,7 @@ public class SiteInfo extends javax.swing.JFrame {
         Adress_TextField1 = new javax.swing.JTextField();
         Metrage_label = new javax.swing.JLabel();
         Metrage_TextFlied = new javax.swing.JTextField();
+        Dislay_Button = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -121,6 +128,13 @@ public class SiteInfo extends javax.swing.JFrame {
 
         Metrage_label.setText("Metrage");
 
+        Dislay_Button.setText("Display");
+        Dislay_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Dislay_ButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,7 +159,9 @@ public class SiteInfo extends javax.swing.JFrame {
                                         .addComponent(Save_Button)
                                         .addGap(18, 18, 18)
                                         .addComponent(Clear_Button)
-                                        .addGap(144, 144, 144))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(Dislay_Button)
+                                        .addGap(61, 61, 61))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(Adress_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -237,7 +253,8 @@ public class SiteInfo extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Clear_Button)
-                    .addComponent(Save_Button))
+                    .addComponent(Save_Button)
+                    .addComponent(Dislay_Button))
                 .addContainerGap())
         );
 
@@ -255,6 +272,16 @@ public class SiteInfo extends javax.swing.JFrame {
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void Dislay_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dislay_ButtonActionPerformed
+        // TODO add your handling code here:
+        Dislay_Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
+    }//GEN-LAST:event_Dislay_ButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -287,6 +314,9 @@ public class SiteInfo extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new SiteInfo().setVisible(true);
+                DBConnect connect = new DBConnect();
+                SiteCollection sc = new SiteCollection();
+                ResultSet singleSiteInfo = sc.getSingleSiteInfo("ASI367");
             }
         });
     }
@@ -304,6 +334,7 @@ public class SiteInfo extends javax.swing.JFrame {
     private javax.swing.JLabel Code_Site_Label;
     private javax.swing.JLabel Code_Site_Label2;
     private javax.swing.JTextField Code_Site_TextField;
+    private javax.swing.JButton Dislay_Button;
     private javax.swing.JLabel Farend_Label;
     private javax.swing.JTextField Farend__TextFlied;
     private javax.swing.JLabel Latitude_Label;

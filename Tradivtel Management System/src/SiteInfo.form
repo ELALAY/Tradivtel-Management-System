@@ -65,7 +65,9 @@
                                       <Component id="Save_Button" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="Clear_Button" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="Dislay_Button" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -190,6 +192,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Clear_Button" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Save_Button" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Dislay_Button" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -330,6 +333,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Metrage_TextFlied">
+    </Component>
+    <Component class="javax.swing.JButton" name="Dislay_Button">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Display"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Dislay_ButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
