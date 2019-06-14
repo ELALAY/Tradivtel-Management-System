@@ -20,14 +20,14 @@ import java.util.logging.Logger;
  *
  * @author hp
  */
-public class SiteInfo extends javax.swing.JFrame {
+public class Site_Search extends javax.swing.JFrame {
 
     private Site current_site;
 
     /**
      * Creates new form SiteInfo
      */
-    public SiteInfo() {
+    public Site_Search() {
         initComponents();
     }
 
@@ -63,11 +63,10 @@ public class SiteInfo extends javax.swing.JFrame {
         Save_Button = new javax.swing.JButton();
         Clear_Button = new javax.swing.JButton();
         Adress_Label1 = new javax.swing.JLabel();
-        Ville_TextField = new javax.swing.JTextField();
+        Adress_TextField1 = new javax.swing.JTextField();
         Metrage_label = new javax.swing.JLabel();
         Metrage_TextFlied = new javax.swing.JTextField();
         Dislay_Button = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
 
         jInternalFrame1.setVisible(true);
 
@@ -159,7 +158,7 @@ public class SiteInfo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Azimut_Label)
-                        .addContainerGap())
+                        .addGap(403, 403, 403))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Code_Site_Label)
@@ -169,39 +168,45 @@ public class SiteInfo extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Adress_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Code_Site_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Ville_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(5, 5, 5)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(Save_Button)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Clear_Button)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(Dislay_Button)
+                                        .addGap(61, 61, 61))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(Adress_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Code_Site_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Adress_TextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(5, 5, 5)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(47, 47, 47)
-                                                .addComponent(Client_Lable))
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGap(47, 47, 47)
+                                                        .addComponent(Client_Lable))
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGap(45, 45, 45)
+                                                        .addComponent(Longitude_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(Client_TextFlied, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                                    .addComponent(Longitude_TextField)))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(45, 45, 45)
-                                                .addComponent(Longitude_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(Client_TextFlied, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                                            .addComponent(Longitude_TextField)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(45, 45, 45)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(Latitude_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(Code_Site_Label2)
-                                            .addComponent(Farend_Label)
-                                            .addComponent(Metrage_label))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(Latitude_TextField)
-                                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(Farend__TextFlied)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                .addComponent(Metrage_TextFlied, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(Latitude_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(Code_Site_Label2)
+                                                    .addComponent(Farend_Label)
+                                                    .addComponent(Metrage_label))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(Latitude_TextField)
+                                                    .addComponent(jComboBox2, 0, 140, Short.MAX_VALUE)
+                                                    .addComponent(Farend__TextFlied))))))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -209,22 +214,13 @@ public class SiteInfo extends javax.swing.JFrame {
                                     .addComponent(Azimut_TextFlied, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))))))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(Main_Title_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(51, 51, 51)
+                .addComponent(Main_Title_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Save_Button)
-                .addGap(18, 18, 18)
-                .addComponent(Clear_Button)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Dislay_Button)
-                .addGap(120, 120, 120))
+                .addComponent(Metrage_TextFlied, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,7 +237,7 @@ public class SiteInfo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Longitude_Label)
                     .addComponent(Longitude_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Ville_TextField)
+                    .addComponent(Adress_TextField1)
                     .addComponent(Adress_Label))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -268,14 +264,12 @@ public class SiteInfo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Metrage_TextFlied, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Metrage_label))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Clear_Button)
                     .addComponent(Save_Button)
                     .addComponent(Dislay_Button))
-                .addGap(29, 29, 29))
+                .addContainerGap())
         );
 
         pack();
@@ -310,7 +304,7 @@ public class SiteInfo extends javax.swing.JFrame {
                         String client = rs.getString("Client");
 
                         Code_Site_TextField.setText(cde_site);
-                        Ville_TextField.setText(client);
+                        Client_TextFlied.setText(client);
                     }
                 } catch (SQLException ex) {
                     Logger.getLogger(SiteInfo.class.getName()).log(Level.SEVERE, null, ex);
@@ -355,7 +349,6 @@ public class SiteInfo extends javax.swing.JFrame {
             @Override
             public void run() {
                 new SiteInfo().setVisible(true);
-                
             }
         });
     }
@@ -364,6 +357,7 @@ public class SiteInfo extends javax.swing.JFrame {
     private javax.swing.JLabel Adress_Label;
     private javax.swing.JLabel Adress_Label1;
     private javax.swing.JTextField Adress_TextField;
+    private javax.swing.JTextField Adress_TextField1;
     private javax.swing.JLabel Azimut_Label;
     private javax.swing.JTextField Azimut_TextFlied;
     private javax.swing.JButton Clear_Button;
@@ -383,11 +377,9 @@ public class SiteInfo extends javax.swing.JFrame {
     private javax.swing.JTextField Metrage_TextFlied;
     private javax.swing.JLabel Metrage_label;
     private javax.swing.JButton Save_Button;
-    private javax.swing.JTextField Ville_TextField;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

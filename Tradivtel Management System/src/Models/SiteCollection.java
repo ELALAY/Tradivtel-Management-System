@@ -14,31 +14,34 @@ import java.util.ArrayList;
 
 import Models.Site;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author hp
  */
 public class SiteCollection {
-    
+
     ArrayList<Site> sites;
     private String path;
     Statement myStmt;
     Connection myCon;
     ResultSet rs;
-    
+
     public static SiteCollection obj = null;
-    
-    public SiteCollection(){
+
+    public SiteCollection() {
         this.sites = new ArrayList<>();
     }
-    
-    public static SiteCollection getObj(){
-        if(obj == null){
+
+    public static SiteCollection getObj() {
+        if (obj == null) {
             obj = new SiteCollection();
         }
         return obj;
     }
+
     /*
     public void addSiteToDB(Site site, int i){
         sites.add(site);
@@ -62,22 +65,30 @@ public class SiteCollection {
             }
         }
     }*/
-    
-    public ResultSet getSingleSiteInfo(String code_site){
-        try{
-            String query = "SELECT * FROM `sites` WHERE Code_Site = 'ASI367'";
+    public ResultSet getSingleSiteInfo_CodeSiteSearch(String code_site) {
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(SiteCollection.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/testtradivtel", "root", "");
+            myStmt = myCon.createStatement();
+
+            String query = "SELECT * FROM `sites` WHERE Code_Site = '" + code_site + "'";
             rs = myStmt.executeQuery(query);
             System.out.println("Recods from db: ");
-            
-                String cde_site = rs.getString("Code Site");
-                String client  = rs.getString("Client");
-                
-                System.out.println("Name: " + cde_site+ " Age: "+client);
-            
-        } catch(SQLException e){
-            System.out.print("error: " + e);
+           
+            while (rs.next()) {
+                String cde_site = rs.getString("Code_Site");
+                String client = rs.getString("Client");
+                System.out.println("Code Site: " + cde_site + "\nClient: " + client);
+            }
+
+        } catch (SQLException e) {
+            System.out.print("here error: " + e);
         }
         return rs;
     }
-    
+
 }
