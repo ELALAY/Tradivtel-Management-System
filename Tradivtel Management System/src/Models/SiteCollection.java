@@ -65,7 +65,8 @@ public class SiteCollection {
             }
         }
     }*/
-    public ResultSet getSingleSiteInfo_CodeSiteSearch(String code_site) {
+    public Site getSingleSiteInfo_CodeSiteSearch(String code_site) {
+        Site site_temp = null;
         try {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
@@ -83,12 +84,14 @@ public class SiteCollection {
                 String cde_site = rs.getString("Code_Site");
                 String client = rs.getString("Client");
                 System.out.println("Code Site: " + cde_site + "\nClient: " + client);
+                
+                site_temp = new Site(code_site, client);
             }
 
         } catch (SQLException e) {
             System.out.print("here error: " + e);
         }
-        return rs;
+        return site_temp;
     }
 
 }

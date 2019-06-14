@@ -141,6 +141,12 @@ public class SiteInfo extends javax.swing.JFrame {
 
         Adress_Label1.setText("Adress");
 
+        Ville_TextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Ville_TextFieldActionPerformed(evt);
+            }
+        });
+
         Metrage_label.setText("Metrage");
 
         Dislay_Button.setText("Display");
@@ -302,19 +308,14 @@ public class SiteInfo extends javax.swing.JFrame {
                 String code_site_temp = Code_Site_TextField.getText();
 
                 SiteCollection site_c = new SiteCollection();
-                ResultSet rs = site_c.getSingleSiteInfo_CodeSiteSearch(code_site_temp);
-
-                try {
-                    while (rs.next()) {
-                        String cde_site = rs.getString("Code_Site");
-                        String client = rs.getString("Client");
-
-                        Code_Site_TextField.setText(cde_site);
-                        Ville_TextField.setText(client);
-                    }
-                } catch (SQLException ex) {
-                    Logger.getLogger(SiteInfo.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                Site site_temp = site_c.getSingleSiteInfo_CodeSiteSearch(code_site_temp);
+                
+                    String cde_site = site_temp.getCode_Site();
+                    String client = site_temp.getClient();
+                    
+                    Code_Site_TextField.setText(cde_site);
+                    Client_TextFlied.setText(client);
+                
             }
         });
     }//GEN-LAST:event_Dislay_ButtonActionPerformed
@@ -322,6 +323,10 @@ public class SiteInfo extends javax.swing.JFrame {
     private void Client_TextFliedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Client_TextFliedActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Client_TextFliedActionPerformed
+
+    private void Ville_TextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ville_TextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Ville_TextFieldActionPerformed
 
     /**
      * @param args the command line arguments

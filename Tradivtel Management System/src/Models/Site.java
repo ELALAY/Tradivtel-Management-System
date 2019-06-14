@@ -25,6 +25,11 @@ public class Site {
     private Travaux Travaux;
     private Integration Integration;
     private Acceptance Acceptance;
+    
+    public Site(String Code_Site, String Client){
+        this.Code_Site = Code_Site;
+        this.Client = Client;
+    }
 
     public Site(String Code_Site, String Client, String Farend, String Azimut, String City, String Adress, String Longitude, String Latitude, String Site_Type, String Technology, double Site_Metrage) {
         this.Code_Site = Code_Site;

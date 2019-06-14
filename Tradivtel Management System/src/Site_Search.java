@@ -296,19 +296,15 @@ public class Site_Search extends javax.swing.JFrame {
                 String code_site_temp = Code_Site_TextField.getText();
 
                 SiteCollection site_c = new SiteCollection();
-                ResultSet rs = site_c.getSingleSiteInfo_CodeSiteSearch(code_site_temp);
+                Site rs = site_c.getSingleSiteInfo_CodeSiteSearch(code_site_temp);
 
-                try {
-                    while (rs.next()) {
-                        String cde_site = rs.getString("Code_Site");
-                        String client = rs.getString("Client");
-
-                        Code_Site_TextField.setText(cde_site);
-                        Client_TextFlied.setText(client);
-                    }
-                } catch (SQLException ex) {
-                    Logger.getLogger(SiteInfo.class.getName()).log(Level.SEVERE, null, ex);
-                }
+               
+                    String cde_site = rs.getCode_Site();
+                    String client = rs.getClient();
+                    
+                    Code_Site_TextField.setText(cde_site);
+                    Client_TextFlied.setText(client);
+                
             }
         });
     }//GEN-LAST:event_Dislay_ButtonActionPerformed
