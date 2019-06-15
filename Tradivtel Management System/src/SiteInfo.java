@@ -66,7 +66,6 @@ public class SiteInfo extends javax.swing.JFrame {
         Ville_TextField = new javax.swing.JTextField();
         Metrage_label = new javax.swing.JLabel();
         Metrage_TextFlied = new javax.swing.JTextField();
-        Dislay_Button = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
         jInternalFrame1.setVisible(true);
@@ -159,13 +158,6 @@ public class SiteInfo extends javax.swing.JFrame {
 
         Metrage_label.setText("Metrage");
 
-        Dislay_Button.setText("Display");
-        Dislay_Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Dislay_ButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -238,9 +230,7 @@ public class SiteInfo extends javax.swing.JFrame {
                 .addComponent(Save_Button)
                 .addGap(18, 18, 18)
                 .addComponent(Clear_Button)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Dislay_Button)
-                .addGap(120, 120, 120))
+                .addGap(187, 187, 187))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,8 +279,7 @@ public class SiteInfo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Clear_Button)
-                    .addComponent(Save_Button)
-                    .addComponent(Dislay_Button))
+                    .addComponent(Save_Button))
                 .addGap(29, 29, 29))
         );
 
@@ -308,27 +297,6 @@ public class SiteInfo extends javax.swing.JFrame {
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
-
-    private void Dislay_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dislay_ButtonActionPerformed
-        // TODO add your handling code here:
-        Dislay_Button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                String code_site_temp = Code_Site_TextField.getText();
-
-                SiteCollection site_c = new SiteCollection();
-                Site site_temp = site_c.getSingleSiteInfo_CodeSiteSearch(code_site_temp);
-                
-                    String cde_site = site_temp.getCode_Site();
-                    String client = site_temp.getClient();
-                    
-                    Code_Site_TextField.setText(cde_site);
-                    Client_TextFlied.setText(client);
-                
-            }
-        });
-    }//GEN-LAST:event_Dislay_ButtonActionPerformed
 
     private void Client_TextFliedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Client_TextFliedActionPerformed
         // TODO add your handling code here:
@@ -410,7 +378,6 @@ public class SiteInfo extends javax.swing.JFrame {
     private javax.swing.JLabel Code_Site_Label;
     private javax.swing.JLabel Code_Site_Label2;
     private javax.swing.JTextField Code_Site_TextField;
-    private javax.swing.JButton Dislay_Button;
     private javax.swing.JLabel Farend_Label;
     private javax.swing.JTextField Farend__TextFlied;
     private javax.swing.JLabel Latitude_Label;

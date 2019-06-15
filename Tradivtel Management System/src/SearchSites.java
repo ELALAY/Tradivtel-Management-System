@@ -1,9 +1,19 @@
+
+import Models.Site;
+import Models.SiteCollection;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author hp
@@ -28,9 +38,10 @@ public class SearchSites extends javax.swing.JFrame {
 
         Search_Button = new javax.swing.JButton();
         MainTitle_Lalbel = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        SearchQuery_TextField = new javax.swing.JTextField();
+        SearchParam_ComboBox = new javax.swing.JComboBox<>();
         Home_Button = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,15 +58,20 @@ public class SearchSites extends javax.swing.JFrame {
         MainTitle_Lalbel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         MainTitle_Lalbel.setText("Recherche de site");
 
-        jTextField1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        SearchQuery_TextField.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        SearchQuery_TextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                SearchQuery_TextFieldActionPerformed(evt);
             }
         });
 
-        jComboBox1.setFont(new java.awt.Font("Gill Sans MT", 3, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Code du Site", "Client", "Viille", "Longitude_Latitude", "Type de Site", " " }));
+        SearchParam_ComboBox.setFont(new java.awt.Font("Gill Sans MT", 3, 18)); // NOI18N
+        SearchParam_ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Code_Site", "Client", "Viille", "Type_Site" }));
+        SearchParam_ComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchParam_ComboBoxActionPerformed(evt);
+            }
+        });
 
         Home_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/home.png"))); // NOI18N
         Home_Button.addActionListener(new java.awt.event.ActionListener() {
@@ -63,6 +79,10 @@ public class SearchSites extends javax.swing.JFrame {
                 Home_ButtonActionPerformed(evt);
             }
         });
+
+        jLabel1.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Error Message here! To be removed afterwards");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -74,17 +94,19 @@ public class SearchSites extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(SearchParam_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Search_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(MainTitle_Lalbel, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(201, 201, 201))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(SearchQuery_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(114, 114, 114))))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Home_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,29 +114,60 @@ public class SearchSites extends javax.swing.JFrame {
                 .addGap(70, 70, 70)
                 .addComponent(MainTitle_Lalbel)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SearchQuery_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Search_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox1))
+                    .addComponent(SearchParam_ComboBox))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
-                .addComponent(Home_Button))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Home_Button)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void SearchQuery_TextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchQuery_TextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_SearchQuery_TextFieldActionPerformed
 
     private void Search_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Search_ButtonActionPerformed
         // TODO add your handling code here:
+        Search_Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String searchQueryString = SearchQuery_TextField.getText();
+                String param_Search = SearchParam_ComboBox.getSelectedItem().toString();
+                //switch()
+
+                ResultSet rs;
+                SiteCollection sites_temp = null;
+                rs = sites_temp.SearchSites(searchQueryString, param_Search);
+
+                try {
+                    if (!rs.next()) {
+                        JOptionPane.showMessageDialog(null, "Aucun resultat trouve");
+                    } else {
+                        System.out.println("result returned");
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(SearchSites.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
     }//GEN-LAST:event_Search_ButtonActionPerformed
 
     private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Home_ButtonActionPerformed
+
+    private void SearchParam_ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchParam_ComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SearchParam_ComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,8 +207,9 @@ public class SearchSites extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Home_Button;
     private javax.swing.JLabel MainTitle_Lalbel;
+    private javax.swing.JComboBox<String> SearchParam_ComboBox;
+    private javax.swing.JTextField SearchQuery_TextField;
     private javax.swing.JButton Search_Button;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

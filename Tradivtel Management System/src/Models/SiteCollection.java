@@ -5,7 +5,6 @@
  */
 package Models;
 
-import java.awt.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -41,30 +40,7 @@ public class SiteCollection {
         }
         return obj;
     }
-
-    /*
-    public void addSiteToDB(Site site, int i){
-        sites.add(site);
-        
-        if(i == 0){
-            try{
-                myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "");
-                myStmt = myCon.createStatement();
-                
-                String sql = "insert into Site"
-                        +"(Code_Site, Client, ...)"
-                        +"values ('" +site.getCode_Site()+"','"+site.getClient()+"','";
-                myStmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
-                
-                rs = myStmt.getGeneratedKeys();
-                if(rs.next()){
-                }
-                
-            }catch(Exception e){
-                System.out.println(e);
-            }
-        }
-    }*/
+    
     public Site getSingleSiteInfo_CodeSiteSearch(String code_site) {
         Site site_temp = null;
         try {
@@ -92,6 +68,32 @@ public class SiteCollection {
             System.out.print("here error: " + e);
         }
         return site_temp;
+    }
+    
+    public ResultSet SearchSites(String searchQuery, String searchParam){
+        ResultSet rs;
+        
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(SiteCollection.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/testtradivtel", "root", "");
+            myStmt = myCon.createStatement();
+            
+            String query = "SELECT * FROM 'sites' WHERE "+searchParam+" = '"+searchQuery+"'";
+            rs = myStmt.executeQuery(query);
+            if(!rs.next()){
+                System.out.println("Empty Result");
+            } else {
+                System.out.println("result returned");
+            }
+            
+          } catch (SQLException e) {
+            System.out.print("here error: " + e);
+        }
+        return rs;
     }
     
 }
