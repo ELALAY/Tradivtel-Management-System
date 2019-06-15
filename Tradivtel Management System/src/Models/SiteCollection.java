@@ -71,7 +71,7 @@ public class SiteCollection {
     }
     
     public ResultSet SearchSites(String searchQuery, String searchParam){
-        ResultSet rs;
+        ResultSet rs = null;
         
         try {
             try {

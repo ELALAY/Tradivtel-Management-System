@@ -144,9 +144,9 @@ public class SearchSites extends javax.swing.JFrame {
                 String param_Search = SearchParam_ComboBox.getSelectedItem().toString();
                 //switch()
 
-                ResultSet rs;
+                ResultSet rs = null;
                 SiteCollection sites_temp = null;
-                rs = sites_temp.SearchSites(searchQueryString, param_Search);
+                //rs = sites_temp.SearchSites(searchQueryString, param_Search);
 
                 try {
                     if (!rs.next()) {
