@@ -23,7 +23,6 @@ import java.util.logging.Logger;
 public class SiteCollection {
 
     ArrayList<Site> sites;
-    private String path;
     Statement myStmt;
     Connection myCon;
     ResultSet rs;
@@ -65,13 +64,13 @@ public class SiteCollection {
 
     public ArrayList<Site> getAllSitesData() throws SQLException {
         ArrayList<Site> sitesList = new ArrayList<>();
-
+        System.out.println("in func allsites data");
         myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/testtradivtel", "root", "");
         myStmt = myCon.createStatement();
 
         String query = "SELECT * FROM sites";
         rs = myStmt.executeQuery(query);
-
+        System.out.println("executing query, rs to list");
         while (rs.next()) {
             String Code_Site = rs.getString("Code_Site");
             String Client = rs.getString("Client");
@@ -92,8 +91,8 @@ public class SiteCollection {
 
         return null;
     }
-    
-    public ArrayList<Site> getResultSetToArrayList(ResultSet rs){
+
+    public ArrayList<Site> getResultSetToArrayList(ResultSet rs) {
         return null;
     }
 }

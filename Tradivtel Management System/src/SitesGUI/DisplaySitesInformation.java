@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * and open the` template in the editor.
  */
 
 /**
@@ -29,10 +29,11 @@ public class DisplaySitesInformation extends javax.swing.JFrame {
     }
     
     public void updateTable() throws SQLException {
-        
+         System.out.println("beging");
         ArrayList<Site> sitesList = sites.getAllSitesData();
+         System.out.println("right after returning the list");
         DefaultTableModel model = (DefaultTableModel) TableDisplaySites_jTable.getModel();
-        
+        System.out.println("before objects");
         Object[] row = new Object[11];
         for(int i=0; i<sitesList.size(); ++i){
             row[0] = sitesList.get(i).getCode_Site();

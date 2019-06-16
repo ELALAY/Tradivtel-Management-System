@@ -157,7 +157,7 @@ public class SearchSites extends javax.swing.JFrame {
                         case "Code_Site":
                             try {
                                  new SearchSites().setVisible(false);
-                                new SiteInfo(rs).setVisible(true);
+                                new SiteInfoInsert(rs).setVisible(true);
                             } catch (SQLException ex) {
                                 Logger.getLogger(SearchSites.class.getName()).log(Level.SEVERE, null, ex);
                             }

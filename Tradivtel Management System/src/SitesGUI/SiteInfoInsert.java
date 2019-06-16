@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,18 +22,22 @@ import java.util.logging.Logger;
  *
  * @author hp
  */
-public class SiteInfo extends javax.swing.JFrame {
-
+public class SiteInfoInsert extends javax.swing.JFrame {
+    
+    ArrayList<Site> sites;
+    Statement myStmt;
+    Connection myCon;
+    ResultSet rs;
     private Site current_site;
 
     /**
      * Creates new form SiteInfo
      */
-    public SiteInfo() {
+    public SiteInfoInsert() {
         initComponents();
     }
 
-    public SiteInfo(ResultSet rs) throws SQLException {
+    public SiteInfoInsert(ResultSet rs) throws SQLException {
         initComponents();
         while (rs.next()) {
             Client_TextFlied.setText(rs.getString("Client"));
@@ -337,6 +342,18 @@ public class SiteInfo extends javax.swing.JFrame {
 
     private void Save_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Save_ButtonActionPerformed
         // TODO add your handling code here:
+        Save_Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/testtradivtel", "root", "");
+                myStmt = myCon.createStatement();
+
+                String query = "SELECT * FROM sites";
+                rs = myStmt.executeQuery(query);
+
+            }
+        });
     }//GEN-LAST:event_Save_ButtonActionPerformed
 
     /**
@@ -356,21 +373,22 @@ public class SiteInfo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SiteInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SiteInfoInsert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SiteInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SiteInfoInsert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SiteInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SiteInfoInsert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SiteInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SiteInfoInsert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new SiteInfo().setVisible(true);
+                new SiteInfoInsert().setVisible(true);
 
             }
         });
