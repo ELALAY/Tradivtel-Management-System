@@ -1,5 +1,4 @@
-package GUI;
-
+package SitesGUI;
 
 import Models.SiteInfo.Site;
 import Models.SiteInfo.SiteCollection;
@@ -31,6 +30,14 @@ public class SiteInfo extends javax.swing.JFrame {
      */
     public SiteInfo() {
         initComponents();
+    }
+
+    public SiteInfo(ResultSet rs) throws SQLException {
+        initComponents();
+        while (rs.next()) {
+            this.current_site.setClient(rs.getString("Client"));
+            this.current_site.setAdress(rs.getString("Adress"));
+        }
     }
 
     /**
@@ -322,13 +329,13 @@ public class SiteInfo extends javax.swing.JFrame {
                 Adress_TextField.setText("");
                 Azimut_TextFlied.setText("");
                 Farend__TextFlied.setText("");
-                
+
             }
         });
     }//GEN-LAST:event_Clear_ButtonActionPerformed
 
     private void Save_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Save_ButtonActionPerformed
-            // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_Save_ButtonActionPerformed
 
     /**
@@ -363,7 +370,7 @@ public class SiteInfo extends javax.swing.JFrame {
             @Override
             public void run() {
                 new SiteInfo().setVisible(true);
-                
+
             }
         });
     }

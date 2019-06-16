@@ -10,6 +10,7 @@ package Models.User;
  * @author hp
  */
 public class User {
+
     private String Username;
     private String Passwrord;
     private String AccountType;
@@ -88,7 +89,5 @@ public class User {
     public String toString() {
         return "User{" + "Username=" + Username + ", Passwrord=" + Passwrord + ", AccountType=" + AccountType + ", Email=" + Email + ", PhoneNumber=" + PhoneNumber + ", FirstName=" + FirstName + ", LastName=" + LastName + '}';
     }
-    
-    
-    
+
 }

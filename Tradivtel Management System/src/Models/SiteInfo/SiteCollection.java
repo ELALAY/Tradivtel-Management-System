@@ -41,31 +41,6 @@ public class SiteCollection {
         return obj;
     }
 
-    public Site getSingleSiteInfo_CodeSiteSearch(String code_site) {
-        Site site_temp = null;
-        try {
-
-            myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/testtradivtel", "root", "");
-            myStmt = myCon.createStatement();
-
-            String query = "SELECT * FROM `sites` WHERE Code_Site = '" + code_site + "'";
-            rs = myStmt.executeQuery(query);
-            System.out.println("Recods from db: ");
-
-            while (rs.next()) {
-                String cde_site = rs.getString("Code_Site");
-                String client = rs.getString("Client");
-                System.out.println("Code Site: " + cde_site + "\nClient: " + client);
-
-                site_temp = new Site(code_site, client);
-            }
-
-        } catch (SQLException e) {
-            System.out.print("here error: " + e);
-        }
-        return site_temp;
-    }
-
     public ResultSet SearchSites(String searchQuery, String searchParam) {
         ResultSet rs = null;
 
@@ -74,7 +49,7 @@ public class SiteCollection {
             myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/testtradivtel", "root", "");
             myStmt = myCon.createStatement();
 
-            String query = "SELECT * FROM 'sites' WHERE " + searchParam + " = '" + searchQuery + "'";
+            String query = "SELECT * FROM sites WHERE " + searchParam + " = '" + searchQuery + "'";
             rs = myStmt.executeQuery(query);
             if (!rs.next()) {
                 System.out.println("Empty Result");
@@ -87,5 +62,4 @@ public class SiteCollection {
         }
         return rs;
     }
-
 }

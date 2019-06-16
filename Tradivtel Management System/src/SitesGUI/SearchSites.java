@@ -1,5 +1,4 @@
-package GUI;
-
+package SitesGUI;
 
 import Models.SiteInfo.Site;
 import Models.SiteInfo.SiteCollection;
@@ -146,18 +145,16 @@ public class SearchSites extends javax.swing.JFrame {
                 String param_Search = SearchParam_ComboBox.getSelectedItem().toString();
                 //switch()
 
-                ResultSet rs = null;
-                SiteCollection sites_temp = null;
-                //rs = sites_temp.SearchSites(searchQueryString, param_Search);
-
-                try {
-                    if (!rs.next()) {
-                        JOptionPane.showMessageDialog(null, "Aucun resultat trouve");
-                    } else {
-                        System.out.println("result returned");
-                    }
-                } catch (SQLException ex) {
-                    Logger.getLogger(SearchSites.class.getName()).log(Level.SEVERE, null, ex);
+              
+                System.out.println(searchQueryString + " " + param_Search);
+                SiteCollection sites_temp = new SiteCollection();
+                ResultSet rs;
+                rs = sites_temp.SearchSites(searchQueryString, param_Search);
+                System.out.println("here");
+                if (rs == null) {
+                    JOptionPane.showMessageDialog(null, "Aucun resultat trouve");
+                } else {
+                    new SiteInfo().setVisible(true);
                 }
             }
         });
