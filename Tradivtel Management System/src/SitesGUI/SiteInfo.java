@@ -35,8 +35,9 @@ public class SiteInfo extends javax.swing.JFrame {
     public SiteInfo(ResultSet rs) throws SQLException {
         initComponents();
         while (rs.next()) {
-            this.current_site.setClient(rs.getString("Client"));
-            this.current_site.setAdress(rs.getString("Adress"));
+            Client_TextFlied.setText(rs.getString("Client"));
+            Adress_TextField.setText(rs.getString("Adress"));
+            Code_Site_TextField.setText(rs.getString("Code_Site"));
         }
     }
 

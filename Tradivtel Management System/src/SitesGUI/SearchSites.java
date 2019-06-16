@@ -145,19 +145,28 @@ public class SearchSites extends javax.swing.JFrame {
                 String param_Search = SearchParam_ComboBox.getSelectedItem().toString();
                 //switch()
 
-              
                 System.out.println(searchQueryString + " " + param_Search);
                 SiteCollection sites_temp = new SiteCollection();
                 ResultSet rs;
                 rs = sites_temp.SearchSites(searchQueryString, param_Search);
-                System.out.println("here");
+
                 if (rs == null) {
                     JOptionPane.showMessageDialog(null, "Aucun resultat trouve");
                 } else {
-                    new SiteInfo().setVisible(true);
+                    switch (param_Search) {
+                        case "Code_Site":
+                            try {
+                                 new SearchSites().setVisible(false);
+                                new SiteInfo(rs).setVisible(true);
+                            } catch (SQLException ex) {
+                                Logger.getLogger(SearchSites.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            break;
+                    }
                 }
             }
-        });
+        }
+        );
     }//GEN-LAST:event_Search_ButtonActionPerformed
 
     private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
@@ -182,16 +191,24 @@ public class SearchSites extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SearchSites.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SearchSites.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SearchSites.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SearchSites.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SearchSites.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SearchSites.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SearchSites.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SearchSites.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
