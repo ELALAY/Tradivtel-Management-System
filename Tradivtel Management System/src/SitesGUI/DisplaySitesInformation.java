@@ -23,9 +23,13 @@ public class DisplaySitesInformation extends javax.swing.JFrame {
     /**
      * Creates new form DisplaySitesInformation
      */
-    public DisplaySitesInformation() throws SQLException {
-        initComponents();
-        updateTable();
+    public DisplaySitesInformation(){
+        try {
+            initComponents();
+            updateTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(DisplaySitesInformation.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void updateTable() throws SQLException {
@@ -138,11 +142,7 @@ public class DisplaySitesInformation extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new DisplaySitesInformation().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(DisplaySitesInformation.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new DisplaySitesInformation().setVisible(true);
             }
         });
     }

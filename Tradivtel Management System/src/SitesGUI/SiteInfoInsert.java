@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -23,7 +24,7 @@ import java.util.logging.Logger;
  * @author hp
  */
 public class SiteInfoInsert extends javax.swing.JFrame {
-    
+
     ArrayList<Site> sites;
     Statement myStmt;
     Connection myCon;
@@ -66,11 +67,11 @@ public class SiteInfoInsert extends javax.swing.JFrame {
         Latitude_Label = new javax.swing.JLabel();
         Latitude_TextField = new javax.swing.JTextField();
         Client_Lable = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        TypeSite_Combobox = new javax.swing.JComboBox<>();
         Client_TextFlied = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         Code_Site_Label2 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        Technology_ComboBox = new javax.swing.JComboBox<>();
         Farend_Label = new javax.swing.JLabel();
         Farend__TextFlied = new javax.swing.JTextField();
         Azimut_Label = new javax.swing.JLabel();
@@ -121,10 +122,10 @@ public class SiteInfoInsert extends javax.swing.JFrame {
 
         Client_Lable.setText("Client");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        TypeSite_Combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        TypeSite_Combobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                TypeSite_ComboboxActionPerformed(evt);
             }
         });
 
@@ -138,10 +139,10 @@ public class SiteInfoInsert extends javax.swing.JFrame {
 
         Code_Site_Label2.setText("Technology");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        Technology_ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Technology_ComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                Technology_ComboBoxActionPerformed(evt);
             }
         });
 
@@ -220,7 +221,7 @@ public class SiteInfoInsert extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(Latitude_TextField)
-                                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(Technology_ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(Farend__TextFlied)
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                 .addGap(0, 0, Short.MAX_VALUE)
@@ -228,7 +229,7 @@ public class SiteInfoInsert extends javax.swing.JFrame {
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TypeSite_Combobox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Azimut_TextFlied, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))))))
             .addGroup(layout.createSequentialGroup()
@@ -273,10 +274,10 @@ public class SiteInfoInsert extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TypeSite_Combobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel5))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Technology_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Code_Site_Label2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,13 +306,13 @@ public class SiteInfoInsert extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Code_Site_TextFieldActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void TypeSite_ComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TypeSite_ComboboxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_TypeSite_ComboboxActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void Technology_ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Technology_ComboBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_Technology_ComboBoxActionPerformed
 
     private void Client_TextFliedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Client_TextFliedActionPerformed
         // TODO add your handling code here:
@@ -346,11 +347,31 @@ public class SiteInfoInsert extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/testtradivtel", "root", "");
-                myStmt = myCon.createStatement();
+                try {
+                    myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/testtradivtel", "root", "");
+                    myStmt = myCon.createStatement();
+                    
+                    String codeTemp = Code_Site_TextField.getText();
+                    String villeTemp = Ville_TextField.getText();
+                    String clientTemp = Client_TextFlied.getText();
+                    String adressTemp = Adress_TextField.getText();
+                    String typeSiteTemp = TypeSite_Combobox.getSelectedItem().toString();
+                    String longitudeTemp = Longitude_TextField.getText();
+                    String latitudeTemp = Latitude_TextField.getText();
+                    String Technology = Technology_ComboBox.getSelectedItem().toString();
+                    String farendTemp = Farend__TextFlied.getText();
+                    String AzimutTemp = Azimut_TextFlied.getText();
+                    double metrageTemp = Double.parseDouble(Metrage_TextFlied.getText());
+                    
+                    String query = "INSERT INTO `sites` "
+                            + "(`Code_Site`, `Client`, `Ville`, `Adress`, `Type_Site`, `Longitude`, `Latitude`, `Technology`, `Farend`, `Azimut`, `Metrage`) "
+                            + "VALUES ('"+codeTemp+"', '"+clientTemp+"', '"+villeTemp+"', '"+adressTemp+"', '"+typeSiteTemp+"', '"+longitudeTemp+"', '"+latitudeTemp+"', '"+Technology+"', "
+                            + "'"+farendTemp+"', '"+AzimutTemp+"', '"+metrageTemp+"');";
+                    rs = myStmt.executeQuery(query);
 
-                String query = "SELECT * FROM sites";
-                rs = myStmt.executeQuery(query);
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "There has been a problem! try again");
+                }
 
             }
         });
@@ -416,9 +437,9 @@ public class SiteInfoInsert extends javax.swing.JFrame {
     private javax.swing.JTextField Metrage_TextFlied;
     private javax.swing.JLabel Metrage_label;
     private javax.swing.JButton Save_Button;
+    private javax.swing.JComboBox<String> Technology_ComboBox;
+    private javax.swing.JComboBox<String> TypeSite_Combobox;
     private javax.swing.JTextField Ville_TextField;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JSeparator jSeparator1;
