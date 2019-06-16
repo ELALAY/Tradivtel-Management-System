@@ -89,10 +89,21 @@ public class SiteCollection {
             sitesList.add(site_temp);
         }
 
-        return null;
+        return sitesList;
     }
 
-    public ArrayList<Site> getResultSetToArrayList(ResultSet rs) {
+    public ArrayList<Site> getSitetResultSetToArrayList(ResultSet rs) throws SQLException {
+        ArrayList<Site> listSitesRS;
+        
+        while (rs.next()) {
+            Site site_temp = null;
+            
+            
+            
+            site_temp.setCode_Site(rs.getString("Code_Site"));
+            
+        }
+        
         return null;
     }
 }

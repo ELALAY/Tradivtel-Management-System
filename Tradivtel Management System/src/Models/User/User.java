@@ -11,6 +11,7 @@ package Models.User;
  */
 public class User {
 
+    private int UserID;
     private String Username;
     private String Passwrord;
     private String AccountType;
@@ -19,7 +20,8 @@ public class User {
     private String FirstName;
     private String LastName;
 
-    public User(String Username, String Passwrord, String AccountType, String Email, String PhoneNumber, String FirstName, String LastName) {
+    public User(String UserId, String Username, String Passwrord, String AccountType, String Email, String PhoneNumber, String FirstName, String LastName) {
+        this.UserID = UserID;
         this.Username = Username;
         this.Passwrord = Passwrord;
         this.AccountType = AccountType;
@@ -27,6 +29,14 @@ public class User {
         this.PhoneNumber = PhoneNumber;
         this.FirstName = FirstName;
         this.LastName = LastName;
+    }
+
+    public int getUserID() {
+        return UserID;
+    }
+
+    public void setUserID(int UserID) {
+        this.UserID = UserID;
     }
 
     public String getUsername() {
