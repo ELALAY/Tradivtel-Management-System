@@ -1,5 +1,13 @@
 package SitesGUI;
 
+import Models.SiteInfo.Site;
+import Models.SiteInfo.SiteCollection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,12 +19,35 @@ package SitesGUI;
  * @author hp
  */
 public class DisplaySitesInformation extends javax.swing.JFrame {
-
+    SiteCollection sites;
     /**
      * Creates new form DisplaySitesInformation
      */
-    public DisplaySitesInformation() {
+    public DisplaySitesInformation() throws SQLException {
         initComponents();
+        updateTable();
+    }
+    
+    public void updateTable() throws SQLException {
+        
+        ArrayList<Site> sitesList = sites.getAllSitesData();
+        DefaultTableModel model = (DefaultTableModel) TableDisplaySites_jTable.getModel();
+        
+        Object[] row = new Object[11];
+        for(int i=0; i<sitesList.size(); ++i){
+            row[0] = sitesList.get(i).getCode_Site();
+            row[1] = sitesList.get(i).getClient();
+            row[2] = sitesList.get(i).getSite_Type();
+            row[3] = sitesList.get(i).getSite_Metrage();
+            row[4] = sitesList.get(i).getCity();
+            row[5] = sitesList.get(i).getAdress();
+            row[6] = sitesList.get(i).getFarend();
+            row[7] = sitesList.get(i).getAzimut();
+            row[8] = sitesList.get(i).getTechnology();
+            row[9] = sitesList.get(i).getLongitude()+" / "+sitesList.get(i).getLatitude();
+            
+            model.addRow(row);
+        }
     }
 
     /**
@@ -31,25 +62,22 @@ public class DisplaySitesInformation extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TableDisplaySites_jTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Gill Sans MT", 3, 36)); // NOI18N
         jLabel1.setText("Tout les Sites");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TableDisplaySites_jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Code du Site", "Client", "Type de Site", "Metrage", "Ville", "Adress", "Farend", "Azimut", "Technology", "Logitude/Latitude"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TableDisplaySites_jTable);
 
         jTabbedPane1.addTab("Info General du Site", jScrollPane1);
 
@@ -60,7 +88,7 @@ public class DisplaySitesInformation extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(292, 292, 292)
                 .addComponent(jLabel1)
-                .addContainerGap(299, Short.MAX_VALUE))
+                .addContainerGap(499, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane1)
@@ -109,15 +137,19 @@ public class DisplaySitesInformation extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DisplaySitesInformation().setVisible(true);
+                try {
+                    new DisplaySitesInformation().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(DisplaySitesInformation.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TableDisplaySites_jTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

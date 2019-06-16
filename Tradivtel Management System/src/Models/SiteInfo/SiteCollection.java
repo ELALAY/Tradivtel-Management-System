@@ -62,4 +62,38 @@ public class SiteCollection {
         }
         return rs;
     }
+
+    public ArrayList<Site> getAllSitesData() throws SQLException {
+        ArrayList<Site> sitesList = new ArrayList<>();
+
+        myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/testtradivtel", "root", "");
+        myStmt = myCon.createStatement();
+
+        String query = "SELECT * FROM sites";
+        rs = myStmt.executeQuery(query);
+
+        while (rs.next()) {
+            String Code_Site = rs.getString("Code_Site");
+            String Client = rs.getString("Client");
+            String Farend = rs.getString("Farend");
+            String Azimut = rs.getString("Azimut");
+            String City = rs.getString("City");
+            String Adress = rs.getString("Adress");
+            String Longitude = rs.getString("Longitude");
+            String Latitude = rs.getString("Latitude");
+            String Site_Type = rs.getString("Site_Type");
+            String Technology = rs.getString("Technology");
+            String Site_Metrage_String = rs.getString("Site_Metrage");
+            double Site_Metrage = Double.parseDouble(Site_Metrage_String);
+
+            Site site_temp = new Site(Code_Site, Client, Azimut, Farend, City, Adress, Longitude, Latitude, Site_Type, Technology, Site_Metrage);
+            sitesList.add(site_temp);
+        }
+
+        return null;
+    }
+    
+    public ArrayList<Site> getResultSetToArrayList(ResultSet rs){
+        return null;
+    }
 }

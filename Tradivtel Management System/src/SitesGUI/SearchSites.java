@@ -67,7 +67,7 @@ public class SearchSites extends javax.swing.JFrame {
         });
 
         SearchParam_ComboBox.setFont(new java.awt.Font("Gill Sans MT", 3, 18)); // NOI18N
-        SearchParam_ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Code_Site", "Client", "Viille", "Type_Site" }));
+        SearchParam_ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Code_Site", "Client", "Viille", "Type_Site" }));
         SearchParam_ComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SearchParam_ComboBoxActionPerformed(evt);
