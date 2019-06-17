@@ -186,8 +186,12 @@ public class MainMenue_Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        new DisplaySites().setVisible(true);
+        try {
+            // TODO add your handling code here:
+            new DisplaySites().setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainMenue_Admin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed

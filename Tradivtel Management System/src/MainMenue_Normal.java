@@ -163,8 +163,12 @@ public class MainMenue_Normal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        new DisplaySites().setVisible(true);
+        try {
+            // TODO add your handling code here:
+            new DisplaySites().setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainMenue_Normal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -206,10 +210,8 @@ public class MainMenue_Normal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainMenue_Normal().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new MainMenue_Normal().setVisible(true);
         });
     }
 

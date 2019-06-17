@@ -48,7 +48,7 @@ public class DisplaySites extends javax.swing.JFrame {
 
         ArrayList<Site> sitesList = new ArrayList<>();
         //rs = sites.getAllSitesData();
-        while (rs.next()) {
+        while (this.rs.next()) {
 
             String Code_Site = rs.getString("Code_Site");
             String Client = rs.getString("Client");

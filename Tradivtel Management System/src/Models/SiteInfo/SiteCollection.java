@@ -12,7 +12,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import java.sql.SQLException;
-import java.util.logging.Logger;
 
 /**
  *
