@@ -17,12 +17,13 @@ import javax.swing.JOptionPane;
  */
 public class FirstFrame_Login extends javax.swing.JFrame {
 
-    UserCollection usersList = null;
+    UserCollection usersList;
 
     /**
      * Creates new form FirstFrame_Login
      */
     public FirstFrame_Login() {
+        this.usersList = new UserCollection();
         initComponents();
         Email_jtextfield.setText("");
         Paasword_Jpassword.setText("");
@@ -127,42 +128,44 @@ public class FirstFrame_Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         LogIn_Jbutton.addActionListener((ActionEvent e) -> {
             //aymane.elalami@aiesec.net // elalay123
-            
-            String username_in = "";
-            String password_in = "";
-            
-            while (username_in.equals("") || password_in.equals("")) {
-                username_in = Email_jtextfield.getText();
-                password_in = Paasword_Jpassword.getText().toString();
-            }
-            
-            System.out.println("here is the enteres pass "+password_in);
-            
-            try {
-                
-                boolean loggedin = false;
-                int count = 0;
-                while (!loggedin) {
-                    count++;
-                    loggedin = usersList.LogIn(username_in, password_in);
-                    
-                    if (loggedin) {
-                        MainManue menue = new MainManue();
-                        menue.setVisible(true);
-                        
-                        Email_jtextfield.setText("");
-                        Paasword_Jpassword.setText("");
-                    }
-                    
-                    if (count == 3) {
-                        JOptionPane.showMessageDialog(null, "Vous avez epuise vos 3 essays\nVeuillez contacter votre administrateur si vous pensez qu'il y a un problem!");
-                    }
+            boolean loggedin = false;
+            //while (!loggedin) {
+
+                String username_in = "";
+                String password_in = "";
+
+                while (username_in.equals("") || password_in.equals("")) {
+                    username_in = Email_jtextfield.getText();
+                    password_in = Paasword_Jpassword.getText().toString();
                 }
 
-            } catch (SQLException ex) {
+                System.out.println("here is the enteres pass " + password_in);
+            //}
+            try {
+
+                //int count = 0;
+                //count++;
+                loggedin = usersList.LogIn(username_in, password_in);
+
+                if (loggedin) {
+                    MainManue menue = new MainManue();
+                    menue.setVisible(true);
+
+                    Email_jtextfield.setText("");
+                    Paasword_Jpassword.setText("");
+                }
+
+                //if (count == 3) {
+                //    JOptionPane.showMessageDialog(null, "Vous avez epuise vos 3 essays\nVeuillez contacter votre administrateur si vous pensez qu'il y a un problem!");
+                //}
+            
+
+        }catch (SQLException ex) {
                 Logger.getLogger(FirstFrame_Login.class.getName()).log(Level.SEVERE, null, ex);
             }
-        });
+
+    }
+);
     }//GEN-LAST:event_LogIn_JbuttonActionPerformed
 
     /**
@@ -179,16 +182,52 @@ public class FirstFrame_Login extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+                
+
+
+
+
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FirstFrame_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FirstFrame_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FirstFrame_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FirstFrame_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FirstFrame_Login.class
+
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        
+
+
+
+
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(FirstFrame_Login.class
+
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        
+
+
+
+
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(FirstFrame_Login.class
+
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        
+
+
+
+
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(FirstFrame_Login.class
+
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

@@ -30,7 +30,7 @@ public class UserCollection {
 
     public boolean LogIn(String email, String password) throws SQLException {
         boolean loggedin = false;
-        
+
         System.out.println("in login");
         myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/testtradivtel", "root", "");
         myStmt = myCon.createStatement();
@@ -38,14 +38,20 @@ public class UserCollection {
         String query = "SELECT * FROM users WHERE Email = '" + email + "'";
         rs = myStmt.executeQuery(query);
         System.out.println("after querry");
-        String passTemp = rs.getString(password);
-        
-        if (passTemp == null ? password == null : passTemp.equals(password)) 
+
+        String passTemp = "";
+        while (rs.next()) {
+            passTemp = rs.getString("Password");
+            System.out.println("here is the password from DB" + passTemp);
+        }
+
+        System.out.println("enteres pass " + password + " password from DB" + passTemp);
+
+        if (passTemp.equals(password)) {
             loggedin = true;
-        if (!rs.next()) {
-            loggedin = false;
-        } 
-        if (!loggedin) {
+        }
+
+        if (!loggedin || passTemp == "") {
             JOptionPane.showMessageDialog(null, "Invalid Email or Password!");
             loggedin = false;
         }
