@@ -39,16 +39,16 @@ public class DisplaySites extends javax.swing.JFrame {
 
     public DisplaySites(ResultSet rs) throws SQLException {
         initComponents();
-        DisplaySitesResults();
+        DisplaySitesResults(rs);
         sites = new SiteCollection();
         this.rs = rs;
     }
 
-    public void DisplaySitesResults() throws SQLException {
+    public void DisplaySitesResults(ResultSet rs) throws SQLException {
 
         ArrayList<Site> sitesList = new ArrayList<>();
         //rs = sites.getAllSitesData();
-        while (this.rs.next()) {
+        while (rs.next()) {
 
             String Code_Site = rs.getString("Code_Site");
             String Client = rs.getString("Client");

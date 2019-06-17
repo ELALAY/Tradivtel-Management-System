@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  *
  * @author hp
  */
-public class SiteInfoInsert extends javax.swing.JFrame {
+public class NewSite extends javax.swing.JFrame {
 
     ArrayList<Site> sites;
     Statement myStmt;
@@ -31,11 +31,11 @@ public class SiteInfoInsert extends javax.swing.JFrame {
     /**
      * Creates new form SiteInfo
      */
-    public SiteInfoInsert() {
+    public NewSite() {
         initComponents();
     }
 
-    public SiteInfoInsert(ResultSet rs) throws SQLException {
+    public NewSite(ResultSet rs) throws SQLException {
         initComponents();
         while (rs.next()) {
             Client_TextFlied.setText(rs.getString("Client"));
@@ -358,16 +358,19 @@ public class SiteInfoInsert extends javax.swing.JFrame {
                     String Technology = Technology_ComboBox.getSelectedItem().toString();
                     String farendTemp = Farend__TextFlied.getText();
                     String AzimutTemp = Azimut_TextFlied.getText();
-                    double metrageTemp = Double.parseDouble(Metrage_TextFlied.getText());
+                    String metragetempstring = Metrage_TextFlied.getText();
+                    System.out.println(metragetempstring);
+                    Double metrageTemp = Double.parseDouble(metragetempstring);
+                    System.out.println(metrageTemp);
                     
                     String query = "INSERT INTO `sites` "
                             + "(`Code_Site`, `Client`, `Ville`, `Adress`, `Type_Site`, `Longitude`, `Latitude`, `Technology`, `Farend`, `Azimut`, `Metrage`) "
                             + "VALUES ('"+codeTemp+"', '"+clientTemp+"', '"+villeTemp+"', '"+adressTemp+"', '"+typeSiteTemp+"', '"+longitudeTemp+"', '"+latitudeTemp+"', '"+Technology+"', "
                             + "'"+farendTemp+"', '"+AzimutTemp+"', '"+metrageTemp+"');";
-                    rs = myStmt.executeQuery(query);
+                    myStmt.execute(query);
 
                 } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "There has been a problem! try again");
+                    JOptionPane.showMessageDialog(null, ex);
                 }
 
             }
@@ -391,14 +394,16 @@ public class SiteInfoInsert extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SiteInfoInsert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewSite.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SiteInfoInsert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewSite.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SiteInfoInsert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewSite.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SiteInfoInsert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewSite.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -406,7 +411,7 @@ public class SiteInfoInsert extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new SiteInfoInsert().setVisible(true);
+                new NewSite().setVisible(true);
 
             }
         });

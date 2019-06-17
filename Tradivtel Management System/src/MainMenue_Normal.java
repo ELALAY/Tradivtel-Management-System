@@ -1,7 +1,7 @@
 
 import SitesGUI.DisplaySites;
 import SitesGUI.SearchSites;
-import SitesGUI.SiteInfoInsert;
+import SitesGUI.NewSite;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -150,7 +150,7 @@ public class MainMenue_Normal extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        SiteInfoInsert newSite = new SiteInfoInsert();
+        NewSite newSite = new NewSite();
         newSite.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
