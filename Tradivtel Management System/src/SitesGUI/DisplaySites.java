@@ -2,6 +2,7 @@ package SitesGUI;
 
 import Models.SiteInfo.Site;
 import Models.SiteInfo.SiteCollection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -13,33 +14,32 @@ import javax.swing.table.DefaultTableModel;
  * To change this template file, choose Tools | Templates
  * and open the` template in the editor.
  */
-
 /**
  *
  * @author hp
  */
-public class DisplaySitesInformation extends javax.swing.JFrame {
-    SiteCollection sites;
+public class DisplaySites extends javax.swing.JFrame {
+
+    private SiteCollection sites;
+    //ResultSet rs;
+
     /**
      * Creates new form DisplaySitesInformation
      */
-    public DisplaySitesInformation(){
-        try {
-            initComponents();
-            updateTable();
-        } catch (SQLException ex) {
-            Logger.getLogger(DisplaySitesInformation.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public DisplaySites() {
+        initComponents();
+        updateTable();
+        sites = new SiteCollection();
     }
-    
-    public void updateTable() throws SQLException {
-         System.out.println("beging");
+
+    public void updateTable() {
+        System.out.println("beging");
         ArrayList<Site> sitesList = sites.getAllSitesData();
-         System.out.println("right after returning the list");
+        System.out.println("right after returning the list");
         DefaultTableModel model = (DefaultTableModel) TableDisplaySites_jTable.getModel();
         System.out.println("before objects");
         Object[] row = new Object[11];
-        for(int i=0; i<sitesList.size(); ++i){
+        for (int i = 0; i < sitesList.size(); ++i) {
             row[0] = sitesList.get(i).getCode_Site();
             row[1] = sitesList.get(i).getClient();
             row[2] = sitesList.get(i).getSite_Type();
@@ -49,8 +49,8 @@ public class DisplaySitesInformation extends javax.swing.JFrame {
             row[6] = sitesList.get(i).getFarend();
             row[7] = sitesList.get(i).getAzimut();
             row[8] = sitesList.get(i).getTechnology();
-            row[9] = sitesList.get(i).getLongitude()+" / "+sitesList.get(i).getLatitude();
-            
+            row[9] = sitesList.get(i).getLongitude() + " / " + sitesList.get(i).getLatitude();
+
             model.addRow(row);
         }
     }
@@ -129,20 +129,22 @@ public class DisplaySitesInformation extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DisplaySitesInformation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DisplaySites.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DisplaySitesInformation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DisplaySites.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DisplaySitesInformation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DisplaySites.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DisplaySitesInformation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DisplaySites.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                new DisplaySitesInformation().setVisible(true);
+                new DisplaySites().setVisible(true);
             }
         });
     }

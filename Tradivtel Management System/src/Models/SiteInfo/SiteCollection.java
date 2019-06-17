@@ -33,13 +33,6 @@ public class SiteCollection {
         this.sites = new ArrayList<>();
     }
 
-    public static SiteCollection getObj() {
-        if (obj == null) {
-            obj = new SiteCollection();
-        }
-        return obj;
-    }
-
     public ResultSet SearchSites(String searchQuery, String searchParam) {
         ResultSet rs = null;
 
@@ -62,48 +55,40 @@ public class SiteCollection {
         return rs;
     }
 
-    public ArrayList<Site> getAllSitesData() throws SQLException {
+    public ArrayList<Site> getAllSitesData() {
+
+        System.out.println("begin the func allsites data");
         ArrayList<Site> sitesList = new ArrayList<>();
         System.out.println("in func allsites data");
-        myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/testtradivtel", "root", "");
-        myStmt = myCon.createStatement();
+        try {
+            myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/testtradivtel", "root", "");
+            myStmt = myCon.createStatement();
 
-        String query = "SELECT * FROM sites";
-        rs = myStmt.executeQuery(query);
-        System.out.println("executing query, rs to list");
-        while (rs.next()) {
-            String Code_Site = rs.getString("Code_Site");
-            String Client = rs.getString("Client");
-            String Farend = rs.getString("Farend");
-            String Azimut = rs.getString("Azimut");
-            String City = rs.getString("City");
-            String Adress = rs.getString("Adress");
-            String Longitude = rs.getString("Longitude");
-            String Latitude = rs.getString("Latitude");
-            String Site_Type = rs.getString("Site_Type");
-            String Technology = rs.getString("Technology");
-            String Site_Metrage_String = rs.getString("Site_Metrage");
-            double Site_Metrage = Double.parseDouble(Site_Metrage_String);
+            String query = "SELECT * FROM sites";
+            rs = myStmt.executeQuery(query);
+            System.out.println("executing query, rs to list");
+            while (rs.next()) {
+                String Code_Site = rs.getString("Code_Site");
+                String Client = rs.getString("Client");
+                String Farend = rs.getString("Farend");
+                String Azimut = rs.getString("Azimut");
+                String City = rs.getString("Ville");
+                String Adress = rs.getString("Adress");
+                String Longitude = rs.getString("Longitude");
+                String Latitude = rs.getString("Latitude");
+                String Site_Type = rs.getString("Type_Site");
+                String Technology = rs.getString("Technology");
+                String Site_Metrage_String = rs.getString("Metrage");
+                double Site_Metrage = Double.parseDouble(Site_Metrage_String);
 
-            Site site_temp = new Site(Code_Site, Client, Azimut, Farend, City, Adress, Longitude, Latitude, Site_Type, Technology, Site_Metrage);
-            sitesList.add(site_temp);
+                Site site_temp = new Site(Code_Site, Client, Azimut, Farend, City, Adress, Longitude, Latitude, Site_Type, Technology, Site_Metrage);
+                sitesList.add(site_temp);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SiteCollection.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         return sitesList;
     }
 
-    public ArrayList<Site> getSitetResultSetToArrayList(ResultSet rs) throws SQLException {
-        ArrayList<Site> listSitesRS;
-        
-        while (rs.next()) {
-            Site site_temp = null;
-            
-            
-            
-            site_temp.setCode_Site(rs.getString("Code_Site"));
-            
-        }
-        
-        return null;
-    }
 }
