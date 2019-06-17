@@ -1,10 +1,6 @@
 
-import Models.SiteInfo.SiteCollection;
-import SitesGUI.SearchSites;
-import SitesGUI.SiteInfoInsert;
+import Models.User.UserCollection;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,12 +16,16 @@ import javax.swing.JOptionPane;
  * @author hp
  */
 public class FirstFrame_Login extends javax.swing.JFrame {
-    
+
+    UserCollection usersList = null;
+
     /**
      * Creates new form FirstFrame_Login
      */
     public FirstFrame_Login() {
         initComponents();
+        Email_jtextfield.setText("");
+        Paasword_Jpassword.setText("");
     }
 
     /**
@@ -125,18 +125,44 @@ public class FirstFrame_Login extends javax.swing.JFrame {
 
     private void LogIn_JbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogIn_JbuttonActionPerformed
         // TODO add your handling code here:
-        LogIn_Jbutton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                
-                String username_in = Email_jtextfield.getText();
-                String password_in = Paasword_Jpassword.getText().toString();
-                System.out.println(password_in);
-                
-                
+        LogIn_Jbutton.addActionListener((ActionEvent e) -> {
+            //aymane.elalami@aiesec.net // elalay123
+            
+            String username_in = "";
+            String password_in = "";
+            
+            while (username_in.equals("") || password_in.equals("")) {
+                username_in = Email_jtextfield.getText();
+                password_in = Paasword_Jpassword.getText().toString();
             }
-        }
-        );
+            
+            System.out.println("here is the enteres pass "+password_in);
+            
+            try {
+                
+                boolean loggedin = false;
+                int count = 0;
+                while (!loggedin) {
+                    count++;
+                    loggedin = usersList.LogIn(username_in, password_in);
+                    
+                    if (loggedin) {
+                        MainManue menue = new MainManue();
+                        menue.setVisible(true);
+                        
+                        Email_jtextfield.setText("");
+                        Paasword_Jpassword.setText("");
+                    }
+                    
+                    if (count == 3) {
+                        JOptionPane.showMessageDialog(null, "Vous avez epuise vos 3 essays\nVeuillez contacter votre administrateur si vous pensez qu'il y a un problem!");
+                    }
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(FirstFrame_Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
     }//GEN-LAST:event_LogIn_JbuttonActionPerformed
 
     /**
@@ -167,10 +193,8 @@ public class FirstFrame_Login extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FirstFrame_Login().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new FirstFrame_Login().setVisible(true);
         });
     }
 

@@ -29,24 +29,27 @@ public class UserCollection {
     }
 
     public boolean LogIn(String email, String password) throws SQLException {
-
+        boolean loggedin = false;
+        
+        System.out.println("in login");
         myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/testtradivtel", "root", "");
         myStmt = myCon.createStatement();
 
         String query = "SELECT * FROM users WHERE Email = '" + email + "'";
         rs = myStmt.executeQuery(query);
-
+        System.out.println("after querry");
+        String passTemp = rs.getString(password);
+        
+        if (passTemp == null ? password == null : passTemp.equals(password)) 
+            loggedin = true;
         if (!rs.next()) {
-            String passTemp = rs.getString(password);
-            if (passTemp == password) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
+            loggedin = false;
+        } 
+        if (!loggedin) {
             JOptionPane.showMessageDialog(null, "Invalid Email or Password!");
-            return false;
+            loggedin = false;
         }
+        return loggedin;
 
     }
 
