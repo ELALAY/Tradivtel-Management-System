@@ -28,14 +28,14 @@ public class UserCollection {
         this.usersList = new ArrayList<>();
     }
 
-    public boolean LogIn(String email, String password) throws SQLException {
+    public boolean LogIn(String username, String password) throws SQLException {
         boolean loggedin = false;
 
         System.out.println("in login");
         myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/testtradivtel", "root", "");
         myStmt = myCon.createStatement();
 
-        String query = "SELECT * FROM users WHERE Email = '" + email + "'";
+        String query = "SELECT * FROM users WHERE Username = '" + username + "'";
         rs = myStmt.executeQuery(query);
         System.out.println("after querry");
 

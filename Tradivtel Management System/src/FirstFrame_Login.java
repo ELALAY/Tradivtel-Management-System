@@ -25,7 +25,7 @@ public class FirstFrame_Login extends javax.swing.JFrame {
     public FirstFrame_Login() {
         this.usersList = new UserCollection();
         initComponents();
-        Email_jtextfield.setText("");
+        Username_jtextfield.setText("");
         Paasword_Jpassword.setText("");
     }
 
@@ -39,7 +39,7 @@ public class FirstFrame_Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        Email_jtextfield = new javax.swing.JTextField();
+        Username_jtextfield = new javax.swing.JTextField();
         LogIn_Jbutton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         Paasword_Jpassword = new javax.swing.JPasswordField();
@@ -49,7 +49,7 @@ public class FirstFrame_Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Gill Sans MT", 3, 36)); // NOI18N
-        jLabel1.setText("Email");
+        jLabel1.setText("Username");
 
         LogIn_Jbutton.setFont(new java.awt.Font("Gloss And Bloom", 3, 18)); // NOI18N
         LogIn_Jbutton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/login.png"))); // NOI18N
@@ -86,19 +86,19 @@ public class FirstFrame_Login extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Paasword_Jpassword))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Email_jtextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addComponent(jLabel4)))
+                        .addComponent(jLabel4))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Paasword_Jpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Username_jtextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(123, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -111,7 +111,7 @@ public class FirstFrame_Login extends javax.swing.JFrame {
                 .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Email_jtextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Username_jtextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -127,45 +127,36 @@ public class FirstFrame_Login extends javax.swing.JFrame {
     private void LogIn_JbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogIn_JbuttonActionPerformed
         // TODO add your handling code here:
         LogIn_Jbutton.addActionListener((ActionEvent e) -> {
-            //aymane.elalami@aiesec.net // elalay123
+            //elalay // elalay123
             boolean loggedin = false;
-            //while (!loggedin) {
 
-                String username_in = "";
-                String password_in = "";
+            String username_in = "";
+            String password_in = "";
 
-                while (username_in.equals("") || password_in.equals("")) {
-                    username_in = Email_jtextfield.getText();
-                    password_in = Paasword_Jpassword.getText().toString();
-                }
+            while (username_in.equals("") || password_in.equals("")) {
+                username_in = Username_jtextfield.getText();
+                password_in = Paasword_Jpassword.getText().toString();
+            }
 
-                System.out.println("here is the enteres pass " + password_in);
-            //}
+            System.out.println("here is the enteres pass " + password_in);
+
             try {
 
-                //int count = 0;
-                //count++;
                 loggedin = usersList.LogIn(username_in, password_in);
 
                 if (loggedin) {
-                    MainManue menue = new MainManue();
-                    menue.setVisible(true);
+                    new MainManue().setVisible(true);
+                    new FirstFrame_Login().setVisible(false);
 
-                    Email_jtextfield.setText("");
+                    Username_jtextfield.setText("");
                     Paasword_Jpassword.setText("");
                 }
 
-                //if (count == 3) {
-                //    JOptionPane.showMessageDialog(null, "Vous avez epuise vos 3 essays\nVeuillez contacter votre administrateur si vous pensez qu'il y a un problem!");
-                //}
-            
-
-        }catch (SQLException ex) {
+            } catch (SQLException ex) {
                 Logger.getLogger(FirstFrame_Login.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-    }
-);
+        });
     }//GEN-LAST:event_LogIn_JbuttonActionPerformed
 
     /**
@@ -182,52 +173,24 @@ public class FirstFrame_Login extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                
 
-
-
-
-
-}
+                }
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(FirstFrame_Login.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        
-
-
-
-
-
-} catch (InstantiationException ex) {
+        } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(FirstFrame_Login.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        
-
-
-
-
-
-} catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(FirstFrame_Login.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        
-
-
-
-
-
-} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FirstFrame_Login.class
-
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -238,9 +201,9 @@ public class FirstFrame_Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Email_jtextfield;
     private javax.swing.JButton LogIn_Jbutton;
     private javax.swing.JPasswordField Paasword_Jpassword;
+    private javax.swing.JTextField Username_jtextfield;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
