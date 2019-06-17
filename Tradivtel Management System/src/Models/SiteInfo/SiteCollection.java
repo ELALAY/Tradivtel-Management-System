@@ -12,7 +12,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import java.sql.SQLException;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -46,11 +45,6 @@ public class SiteCollection {
 
             String query = "SELECT * FROM sites WHERE " + searchParam + " = '" + searchQuery + "'";
             rs = myStmt.executeQuery(query);
-            if (!rs.next()) {
-                System.out.println("Empty Result");
-            } else {
-                System.out.println("result returned");
-            }
 
         } catch (SQLException e) {
             System.out.print("here error: " + e);
@@ -58,10 +52,10 @@ public class SiteCollection {
         return rs;
     }
 
-    public ResultSet getAllSitesData() {
+    public ResultSet getAllSitesData() throws SQLException {
 
         System.out.println("begin the func allsites data");
-        try {
+        
             myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/testtradivtel", "root", "");
             myStmt = myCon.createStatement();
 
@@ -87,9 +81,7 @@ public class SiteCollection {
                 sites.add(site_temp);
             }*/
 
-        } catch (SQLException ex) {
-            Logger.getLogger(SiteCollection.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
         return this.rs;
     }
 

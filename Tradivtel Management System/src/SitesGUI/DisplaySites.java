@@ -2,8 +2,11 @@ package SitesGUI;
 
 import Models.SiteInfo.Site;
 import Models.SiteInfo.SiteCollection;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,68 +25,117 @@ public class DisplaySites extends javax.swing.JFrame {
 
     private SiteCollection sites;
     ResultSet rs;
-    //ResultSet rs;
+    Statement myStmt;
+    Connection myCon;
 
     /**
      * Creates new form DisplaySitesInformation
      */
-    public DisplaySites() {
+    public DisplaySites() throws SQLException {
         initComponents();
-        updateTable();
+        DisplayAllSites();
         sites = new SiteCollection();
     }
 
-    public void updateTable() {
-        try {
-            System.out.println("beging");
-            ArrayList<Site> sitesList = new ArrayList<>();
-            rs = sites.getAllSitesData();
-            while (rs.next()) {
-                try {
-                    String Code_Site = rs.getString("Code_Site");
-                    String Client = rs.getString("Client");
-                    String Farend = rs.getString("Farend");
-                    String Azimut = rs.getString("Azimut");
-                    String City = rs.getString("Ville");
-                    String Adress = rs.getString("Adress");
-                    String Longitude = rs.getString("Longitude");
-                    String Latitude = rs.getString("Latitude");
-                    String Site_Type = rs.getString("Type_Site");
-                    String Technology = rs.getString("Technology");
-                    String Site_Metrage_String = rs.getString("Metrage");
-                    double Site_Metrage = Double.parseDouble(Site_Metrage_String);
+    public DisplaySites(ResultSet rs) throws SQLException {
+        initComponents();
+        DisplaySitesResults();
+        sites = new SiteCollection();
+        this.rs = rs;
+    }
 
-                    Site site_temp = new Site(Code_Site, Client, Azimut, Farend, City, Adress, Longitude, Latitude, Site_Type, Technology, Site_Metrage);
-                    sitesList.add(site_temp);
-                } catch (SQLException ex) {
-                    Logger.getLogger(DisplaySites.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+    public void DisplaySitesResults() throws SQLException {
 
-            System.out.println("right after returning the list");
+        ArrayList<Site> sitesList = new ArrayList<>();
+        //rs = sites.getAllSitesData();
+        while (rs.next()) {
 
-            DefaultTableModel model = (DefaultTableModel) TableDisplaySites_jTable.getModel();
+            String Code_Site = rs.getString("Code_Site");
+            String Client = rs.getString("Client");
+            String Farend = rs.getString("Farend");
+            String Azimut = rs.getString("Azimut");
+            String City = rs.getString("Ville");
+            String Adress = rs.getString("Adress");
+            String Longitude = rs.getString("Longitude");
+            String Latitude = rs.getString("Latitude");
+            String Site_Type = rs.getString("Type_Site");
+            String Technology = rs.getString("Technology");
+            String Site_Metrage_String = rs.getString("Metrage");
+            double Site_Metrage = Double.parseDouble(Site_Metrage_String);
 
-            System.out.println("before objects");
+            Site site_temp = new Site(Code_Site, Client, Azimut, Farend, City, Adress, Longitude, Latitude, Site_Type, Technology, Site_Metrage);
+            sitesList.add(site_temp);
 
-            Object[] row = new Object[11];
-            for (int i = 0; i < sitesList.size(); ++i) {
-                row[0] = sitesList.get(i).getCode_Site();
-                row[1] = sitesList.get(i).getClient();
-                row[2] = sitesList.get(i).getSite_Type();
-                row[3] = sitesList.get(i).getSite_Metrage();
-                row[4] = sitesList.get(i).getCity();
-                row[5] = sitesList.get(i).getAdress();
-                row[6] = sitesList.get(i).getFarend();
-                row[7] = sitesList.get(i).getAzimut();
-                row[8] = sitesList.get(i).getTechnology();
-                row[9] = sitesList.get(i).getLongitude() + " / " + sitesList.get(i).getLatitude();
-
-                model.addRow(row);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DisplaySites.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        DefaultTableModel model = (DefaultTableModel) TableDisplaySites_jTable.getModel();
+
+        Object[] row = new Object[11];
+        for (int i = 0; i < sitesList.size(); ++i) {
+            row[0] = sitesList.get(i).getCode_Site();
+            row[1] = sitesList.get(i).getClient();
+            row[2] = sitesList.get(i).getSite_Type();
+            row[3] = sitesList.get(i).getSite_Metrage();
+            row[4] = sitesList.get(i).getCity();
+            row[5] = sitesList.get(i).getAdress();
+            row[6] = sitesList.get(i).getFarend();
+            row[7] = sitesList.get(i).getAzimut();
+            row[8] = sitesList.get(i).getTechnology();
+            row[9] = sitesList.get(i).getLongitude() + " / " + sitesList.get(i).getLatitude();
+
+            model.addRow(row);
+        }
+
+    }
+
+    public void DisplayAllSites() throws SQLException {
+
+        myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/testtradivtel", "root", "");
+        myStmt = myCon.createStatement();
+
+        String query = "SELECT * FROM sites";
+        this.rs = myStmt.executeQuery(query);
+
+        ArrayList<Site> sitesList = new ArrayList<>();
+        //rs = sites.getAllSitesData();
+        while (rs.next()) {
+
+            String Code_Site = rs.getString("Code_Site");
+            String Client = rs.getString("Client");
+            String Farend = rs.getString("Farend");
+            String Azimut = rs.getString("Azimut");
+            String City = rs.getString("Ville");
+            String Adress = rs.getString("Adress");
+            String Longitude = rs.getString("Longitude");
+            String Latitude = rs.getString("Latitude");
+            String Site_Type = rs.getString("Type_Site");
+            String Technology = rs.getString("Technology");
+            String Site_Metrage_String = rs.getString("Metrage");
+            double Site_Metrage = Double.parseDouble(Site_Metrage_String);
+
+            Site site_temp = new Site(Code_Site, Client, Azimut, Farend, City, Adress, Longitude, Latitude, Site_Type, Technology, Site_Metrage);
+            sitesList.add(site_temp);
+
+        }
+
+        DefaultTableModel model = (DefaultTableModel) TableDisplaySites_jTable.getModel();
+
+        Object[] row = new Object[11];
+        for (int i = 0; i < sitesList.size(); ++i) {
+            row[0] = sitesList.get(i).getCode_Site();
+            row[1] = sitesList.get(i).getClient();
+            row[2] = sitesList.get(i).getSite_Type();
+            row[3] = sitesList.get(i).getSite_Metrage();
+            row[4] = sitesList.get(i).getCity();
+            row[5] = sitesList.get(i).getAdress();
+            row[6] = sitesList.get(i).getFarend();
+            row[7] = sitesList.get(i).getAzimut();
+            row[8] = sitesList.get(i).getTechnology();
+            row[9] = sitesList.get(i).getLongitude() + " / " + sitesList.get(i).getLatitude();
+
+            model.addRow(row);
+        }
+
     }
 
     /**
@@ -175,7 +227,11 @@ public class DisplaySites extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new DisplaySites().setVisible(true);
+                try {
+                    new DisplaySites().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(DisplaySites.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

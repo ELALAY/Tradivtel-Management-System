@@ -153,15 +153,11 @@ public class SearchSites extends javax.swing.JFrame {
                 if (rs == null) {
                     JOptionPane.showMessageDialog(null, "Aucun resultat trouve");
                 } else {
-                    switch (param_Search) {
-                        case "Code_Site":
-                            try {
-                                 new SearchSites().setVisible(false);
-                                new SiteInfoInsert(rs).setVisible(true);
-                            } catch (SQLException ex) {
-                                Logger.getLogger(SearchSites.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                            break;
+                    try { 
+                        new DisplaySites(rs).setVisible(true);
+                        new SearchSites().setVisible(false);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(SearchSites.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             }
