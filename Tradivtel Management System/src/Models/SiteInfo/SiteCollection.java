@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import Models.SiteInfo.Site;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,6 +30,10 @@ public class SiteCollection {
 
     public SiteCollection() {
         this.sites = new ArrayList<>();
+    }
+
+    public SiteCollection(ArrayList<Site> sites) {
+        this.sites = sites;
     }
 
     public ResultSet SearchSites(String searchQuery, String searchParam) {
@@ -55,19 +58,18 @@ public class SiteCollection {
         return rs;
     }
 
-    public ArrayList<Site> getAllSitesData() {
+    public ResultSet getAllSitesData() {
 
         System.out.println("begin the func allsites data");
-        ArrayList<Site> sitesList = new ArrayList<>();
-        System.out.println("in func allsites data");
         try {
             myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/testtradivtel", "root", "");
             myStmt = myCon.createStatement();
 
+            System.out.println("in func allsites data, after establishing connexion");
             String query = "SELECT * FROM sites";
-            rs = myStmt.executeQuery(query);
+            this.rs = myStmt.executeQuery(query);
             System.out.println("executing query, rs to list");
-            while (rs.next()) {
+            /*while (rs.next()) {
                 String Code_Site = rs.getString("Code_Site");
                 String Client = rs.getString("Client");
                 String Farend = rs.getString("Farend");
@@ -82,13 +84,13 @@ public class SiteCollection {
                 double Site_Metrage = Double.parseDouble(Site_Metrage_String);
 
                 Site site_temp = new Site(Code_Site, Client, Azimut, Farend, City, Adress, Longitude, Latitude, Site_Type, Technology, Site_Metrage);
-                sitesList.add(site_temp);
-            }
+                sites.add(site_temp);
+            }*/
 
         } catch (SQLException ex) {
             Logger.getLogger(SiteCollection.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return sitesList;
+        return this.rs;
     }
 
 }

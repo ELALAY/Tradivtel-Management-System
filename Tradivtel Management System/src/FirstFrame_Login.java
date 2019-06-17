@@ -145,7 +145,7 @@ public class FirstFrame_Login extends javax.swing.JFrame {
                 loggedin = usersList.LogIn(username_in, password_in);
 
                 if (loggedin) {
-                    new MainManue().setVisible(true);
+                    new MainMenue_Normal().setVisible(true);
                     new FirstFrame_Login().setVisible(false);
 
                     Username_jtextfield.setText("");
