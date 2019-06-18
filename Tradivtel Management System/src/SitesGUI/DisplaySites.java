@@ -1,8 +1,10 @@
 package SitesGUI;
 
+import MenueGUI.MainMenue_Admin;
 import MenueGUI.MainMenue_Normal;
 import Models.SiteInfo.Site;
 import Models.SiteInfo.SiteCollection;
+import Models.User.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -23,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
  * @author hp
  */
 public class DisplaySites extends javax.swing.JFrame {
-
+    User current_User;
     private SiteCollection sites;
     ResultSet rs;
     Statement myStmt;
@@ -40,13 +42,15 @@ public class DisplaySites extends javax.swing.JFrame {
         TableDisplaySites_jTable.setEditingColumn(0);
     }
 
-    public DisplaySites(ResultSet rs) throws SQLException {
+    public DisplaySites(ResultSet rs, User current_User) throws SQLException {
         initComponents();
         DisplaySitesResults(rs);
         sites = new SiteCollection();
         this.rs = rs;
         TableDisplaySites_jTable.setEditingRow(0);
         TableDisplaySites_jTable.setEditingColumn(0);
+        this.current_User = current_User;
+        UserInfo_Label.setText(current_User.getUsername());
     }
 
     public void DisplaySitesResults(ResultSet rs) throws SQLException {
@@ -158,6 +162,7 @@ public class DisplaySites extends javax.swing.JFrame {
         TableDisplaySites_jTable = new javax.swing.JTable();
         Home_Button = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        UserInfo_Label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -193,25 +198,30 @@ public class DisplaySites extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(292, 292, 292)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(Home_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 673, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(Home_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jSeparator1)))
+                        .addComponent(jSeparator1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(292, 292, 292)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 673, Short.MAX_VALUE)
+                        .addComponent(UserInfo_Label)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(UserInfo_Label)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
@@ -224,15 +234,15 @@ public class DisplaySites extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
-        try {
-            // TODO add your handling code here:
+        // TODO add your handling code here:
+       if (current_User.getAccountType().equals("Admin")) {
             dispose();
-            new MainMenue_Normal().setVisible(true);
-            new DisplaySites().setVisible(false);
-//.setvisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(DisplaySites.class.getName()).log(Level.SEVERE, null, ex);
+            new MainMenue_Admin(current_User).setVisible(true);
+        } else {
+            dispose();
+            new MainMenue_Normal(current_User).setVisible(true);
         }
+//.setvisible(true);
     }//GEN-LAST:event_Home_ButtonActionPerformed
 
     /**
@@ -279,6 +289,7 @@ public class DisplaySites extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Home_Button;
     private javax.swing.JTable TableDisplaySites_jTable;
+    private javax.swing.JLabel UserInfo_Label;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;

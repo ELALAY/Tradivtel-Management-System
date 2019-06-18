@@ -21,9 +21,8 @@ public class User {
     private String PhoneNumber;
     private String FirstName;
     private String LastName;
-    private Date BirthDate;
 
-    public User(int UserId, String Username, String Passwrord, String AccountType, String Email, String PhoneNumber, String FirstName, String LastName, Date birthDate) {
+    public User(int UserId, String Username, String Passwrord, String AccountType, String Email, String PhoneNumber, String FirstName, String LastName) {
         this.UserID = UserId;
         this.Username = Username;
         this.Passwrord = Passwrord;
@@ -32,7 +31,6 @@ public class User {
         this.PhoneNumber = PhoneNumber;
         this.FirstName = FirstName;
         this.LastName = LastName;
-        this.BirthDate  = birthDate;
     }
 
     public int getUserID() {

@@ -1,7 +1,10 @@
 package SitesGUI;
 
+import MenueGUI.MainMenue_Admin;
+import MenueGUI.MainMenue_Normal;
 import Models.SiteInfo.Site;
 import Models.SiteInfo.SiteCollection;
+import Models.User.User;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
@@ -21,11 +24,18 @@ import javax.swing.JOptionPane;
  */
 public class SearchSites extends javax.swing.JFrame {
 
+    User current_User;
+
     /**
      * Creates new form SearchSites
      */
     public SearchSites() {
         initComponents();
+    }
+
+    public SearchSites(User current_User) {
+        this.current_User = current_User;
+        UserInfo_Label.setText(current_User.getUsername());
     }
 
     /**
@@ -42,6 +52,7 @@ public class SearchSites extends javax.swing.JFrame {
         SearchQuery_TextField = new javax.swing.JTextField();
         SearchParam_ComboBox = new javax.swing.JComboBox<>();
         Home_Button = new javax.swing.JButton();
+        UserInfo_Label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,11 +112,17 @@ public class SearchSites extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Home_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(UserInfo_Label)
+                .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addContainerGap()
+                .addComponent(UserInfo_Label)
+                .addGap(45, 45, 45)
                 .addComponent(MainTitle_Lalbel)
                 .addGap(18, 18, 18)
                 .addComponent(SearchQuery_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -113,7 +130,7 @@ public class SearchSites extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Search_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(SearchParam_ComboBox))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addComponent(Home_Button))
         );
 
@@ -143,7 +160,7 @@ public class SearchSites extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Aucun resultat trouve");
                 } else {
                     try {
-                        new DisplaySites(rs).setVisible(true);
+                        new DisplaySites(rs, current_User).setVisible(true);
                         dispose();
                     } catch (SQLException ex) {
                         Logger.getLogger(SearchSites.class.getName()).log(Level.SEVERE, null, ex);
@@ -156,6 +173,13 @@ public class SearchSites extends javax.swing.JFrame {
 
     private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
         // TODO add your handling code here:
+        if (current_User.getAccountType().equals("Admin")) {
+            dispose();
+            new MainMenue_Admin(current_User).setVisible(true);
+        } else {
+            dispose();
+            new MainMenue_Normal(current_User).setVisible(true);
+        }
     }//GEN-LAST:event_Home_ButtonActionPerformed
 
     private void SearchParam_ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchParam_ComboBoxActionPerformed
@@ -211,5 +235,6 @@ public class SearchSites extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> SearchParam_ComboBox;
     private javax.swing.JTextField SearchQuery_TextField;
     private javax.swing.JButton Search_Button;
+    private javax.swing.JLabel UserInfo_Label;
     // End of variables declaration//GEN-END:variables
 }

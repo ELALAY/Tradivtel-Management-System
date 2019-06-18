@@ -1,7 +1,8 @@
-package Models.User;
-
+package UsersGUI;
 
 import MenueGUI.MainMenue_Normal;
+import Models.User.User;
+import Models.User.UserCollection;
 import Models.User.UserCollection;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
@@ -20,6 +21,7 @@ import javax.swing.JOptionPane;
  */
 public class FirstFrame_Login extends javax.swing.JFrame {
 
+    User current_User = null;
     UserCollection usersList;
 
     /**
@@ -145,12 +147,13 @@ public class FirstFrame_Login extends javax.swing.JFrame {
 
             try {
 
-                loggedin = usersList.LogIn(username_in, password_in);
+                current_User = usersList.LogIn(username_in, password_in);
 
-                if (loggedin) {
-                    new MainMenue_Normal().setVisible(true);
-                    new FirstFrame_Login().setVisible(false);
-
+                if (current_User != null) {
+                    dispose();
+                    new MainMenue_Normal(current_User).setVisible(true);
+                    
+                    
                     Username_jtextfield.setText("");
                     Paasword_Jpassword.setText("");
                 }

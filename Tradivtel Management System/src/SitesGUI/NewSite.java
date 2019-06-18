@@ -1,7 +1,9 @@
 package SitesGUI;
 
+import MenueGUI.MainMenue_Admin;
 import MenueGUI.MainMenue_Normal;
 import Models.SiteInfo.Site;
+import Models.User.User;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -10,8 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /*
@@ -25,6 +25,7 @@ import javax.swing.JOptionPane;
  */
 public class NewSite extends javax.swing.JFrame {
 
+    User current_User;
     ArrayList<Site> sites;
     Statement myStmt;
     Connection myCon;
@@ -38,12 +39,14 @@ public class NewSite extends javax.swing.JFrame {
         initComponents();
     }
 
-    public NewSite(ResultSet rs) throws SQLException {
+    public NewSite(ResultSet rs, User current_User) throws SQLException {
         initComponents();
         while (rs.next()) {
             Client_TextFlied.setText(rs.getString("Client"));
             Adress_TextField.setText(rs.getString("Adress"));
             Code_Site_TextField.setText(rs.getString("Code_Site"));
+            this.current_site = current_site;
+            UserInfo_Label.setText(current_User.getUsername());
         }
     }
 
@@ -84,6 +87,7 @@ public class NewSite extends javax.swing.JFrame {
         Home_Button = new javax.swing.JButton();
         Technology_TextField = new javax.swing.JTextField();
         TypeSite_TextField = new javax.swing.JTextField();
+        UserInfo_Label = new javax.swing.JLabel();
 
         jInternalFrame1.setVisible(true);
 
@@ -172,53 +176,6 @@ public class NewSite extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Azimut_Label)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Azimut_TextFlied, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Code_Site_Label)
-                            .addComponent(Adress_Label)
-                            .addComponent(jLabel5)
-                            .addComponent(Adress_Label1))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(TypeSite_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Adress_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Ville_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Code_Site_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(Client_Lable))
-                            .addComponent(Longitude_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Client_TextFlied, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                            .addComponent(Longitude_TextField)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Latitude_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Code_Site_Label2)
-                            .addComponent(Farend_Label)
-                            .addComponent(Metrage_label))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Latitude_TextField)
-                            .addComponent(Farend__TextFlied)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(Metrage_TextFlied, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Technology_TextField, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Home_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -235,11 +192,63 @@ public class NewSite extends javax.swing.JFrame {
                         .addGap(72, 72, 72)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(UserInfo_Label)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Azimut_Label)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Azimut_TextFlied, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Code_Site_Label)
+                                    .addComponent(Adress_Label)
+                                    .addComponent(jLabel5)
+                                    .addComponent(Adress_Label1))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(TypeSite_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(Adress_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(Ville_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(Code_Site_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(2, 2, 2)
+                                        .addComponent(Client_Lable))
+                                    .addComponent(Longitude_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(Client_TextFlied, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                    .addComponent(Longitude_TextField)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Latitude_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Code_Site_Label2)
+                                    .addComponent(Farend_Label)
+                                    .addComponent(Metrage_label))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Latitude_TextField)
+                                    .addComponent(Farend__TextFlied)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(Metrage_TextFlied, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(Technology_TextField, javax.swing.GroupLayout.Alignment.TRAILING))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(17, 17, 17)
+                .addComponent(UserInfo_Label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Main_Title_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -334,7 +343,7 @@ public class NewSite extends javax.swing.JFrame {
                 try {
                     myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/testtradivtel", "root", "");
                     myStmt = myCon.createStatement();
-                    
+
                     String codeTemp = Code_Site_TextField.getText();
                     String villeTemp = Ville_TextField.getText();
                     String clientTemp = Client_TextFlied.getText();
@@ -349,11 +358,11 @@ public class NewSite extends javax.swing.JFrame {
                     System.out.println(metragetempstring);
                     Double metrageTemp = Double.parseDouble(metragetempstring);
                     System.out.println(metrageTemp);
-                    
+
                     String query = "INSERT INTO `sites` "
                             + "(`Code_Site`, `Client`, `Ville`, `Adress`, `Type_Site`, `Longitude`, `Latitude`, `Technology`, `Farend`, `Azimut`, `Metrage`) "
-                            + "VALUES ('"+codeTemp+"', '"+clientTemp+"', '"+villeTemp+"', '"+adressTemp+"', '"+typeSiteTemp+"', '"+longitudeTemp+"', '"+latitudeTemp+"', '"+Technology+"', "
-                            + "'"+farendTemp+"', '"+AzimutTemp+"', '"+metrageTemp+"');";
+                            + "VALUES ('" + codeTemp + "', '" + clientTemp + "', '" + villeTemp + "', '" + adressTemp + "', '" + typeSiteTemp + "', '" + longitudeTemp + "', '" + latitudeTemp + "', '" + Technology + "', "
+                            + "'" + farendTemp + "', '" + AzimutTemp + "', '" + metrageTemp + "');";
                     myStmt.execute(query);
 
                 } catch (SQLException ex) {
@@ -366,9 +375,13 @@ public class NewSite extends javax.swing.JFrame {
 
     private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
         // TODO add your handling code here:
-        new MainMenue_Normal().setVisible(true);
-        dispose();
-        //.setvisible(true);
+        if (current_User.getAccountType().equals("Admin")) {
+            dispose();
+            new MainMenue_Admin(current_User).setVisible(true);
+        } else {
+            dispose();
+            new MainMenue_Normal(current_User).setVisible(true);
+        }
     }//GEN-LAST:event_Home_ButtonActionPerformed
 
     /**
@@ -394,7 +407,7 @@ public class NewSite extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        
+
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -435,6 +448,7 @@ public class NewSite extends javax.swing.JFrame {
     private javax.swing.JButton Save_Button;
     private javax.swing.JTextField Technology_TextField;
     private javax.swing.JTextField TypeSite_TextField;
+    private javax.swing.JLabel UserInfo_Label;
     private javax.swing.JTextField Ville_TextField;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel5;
