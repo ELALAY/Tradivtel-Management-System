@@ -1,6 +1,5 @@
 package MenueGUI;
 
-
 import SitesGUI.DisplaySites;
 import SitesGUI.SearchSites;
 import SitesGUI.NewSite;
@@ -9,28 +8,32 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Models.User.User;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author hp
  */
 public class MainMenue_Admin extends javax.swing.JFrame {
+
     User current_User;
+
     /**
      * Creates new form MainHere
      */
     public MainMenue_Admin() {
         initComponents();
     }
+
     public MainMenue_Admin(User current_User) {
         this.current_User = current_User;
-         UserInfo_Label.setText(current_User.getUsername());
+        UserInfo_Label.setText(current_User.getUsername());
     }
 
     /**
@@ -43,14 +46,14 @@ public class MainMenue_Admin extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        SearchSites_Button = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        NouveauSite_Button = new javax.swing.JButton();
+        AllSits_Button = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        MyProfile_Button = new javax.swing.JButton();
+        CreateProfile_Button = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         UserInfo_Label = new javax.swing.JLabel();
 
@@ -60,12 +63,12 @@ public class MainMenue_Admin extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Tout les Sites");
 
-        jButton2.setFont(new java.awt.Font("Gloss And Bloom", 3, 18)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/search.png"))); // NOI18N
-        jButton2.setText("Search");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        SearchSites_Button.setFont(new java.awt.Font("Gloss And Bloom", 3, 18)); // NOI18N
+        SearchSites_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/search.png"))); // NOI18N
+        SearchSites_Button.setText("Search");
+        SearchSites_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                SearchSites_ButtonActionPerformed(evt);
             }
         });
 
@@ -73,21 +76,21 @@ public class MainMenue_Admin extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Nouveau Site");
 
-        jButton3.setFont(new java.awt.Font("Gloss And Bloom", 3, 18)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/addrug.png"))); // NOI18N
-        jButton3.setText("Nouveau");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        NouveauSite_Button.setFont(new java.awt.Font("Gloss And Bloom", 3, 18)); // NOI18N
+        NouveauSite_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/addrug.png"))); // NOI18N
+        NouveauSite_Button.setText("Nouveau");
+        NouveauSite_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                NouveauSite_ButtonActionPerformed(evt);
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Gloss And Bloom", 3, 18)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/search.png"))); // NOI18N
-        jButton4.setText("Tout les Sites");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        AllSits_Button.setFont(new java.awt.Font("Gloss And Bloom", 3, 18)); // NOI18N
+        AllSits_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/search.png"))); // NOI18N
+        AllSits_Button.setText("Tout les Sites");
+        AllSits_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                AllSits_ButtonActionPerformed(evt);
             }
         });
 
@@ -99,21 +102,21 @@ public class MainMenue_Admin extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Mon Profile");
 
-        jButton5.setFont(new java.awt.Font("Gloss And Bloom", 3, 18)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/addrug.png"))); // NOI18N
-        jButton5.setText("Mon Profile");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        MyProfile_Button.setFont(new java.awt.Font("Gloss And Bloom", 3, 18)); // NOI18N
+        MyProfile_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/addrug.png"))); // NOI18N
+        MyProfile_Button.setText("Mon Profile");
+        MyProfile_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                MyProfile_ButtonActionPerformed(evt);
             }
         });
 
-        jButton6.setFont(new java.awt.Font("Gloss And Bloom", 3, 18)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/addrug.png"))); // NOI18N
-        jButton6.setText("Creer Profile");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        CreateProfile_Button.setFont(new java.awt.Font("Gloss And Bloom", 3, 18)); // NOI18N
+        CreateProfile_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/addrug.png"))); // NOI18N
+        CreateProfile_Button.setText("Creer Profile");
+        CreateProfile_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                CreateProfile_ButtonActionPerformed(evt);
             }
         });
 
@@ -138,18 +141,18 @@ public class MainMenue_Admin extends javax.swing.JFrame {
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton6)
-                                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(SearchSites_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(CreateProfile_Button)
+                                    .addComponent(MyProfile_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4)
+                    .addComponent(AllSits_Button)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(NouveauSite_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(UserInfo_Label)))
                 .addGap(13, 13, 13))
@@ -168,58 +171,84 @@ public class MainMenue_Admin extends javax.swing.JFrame {
                         .addComponent(UserInfo_Label)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SearchSites_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AllSits_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NouveauSite_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(MyProfile_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CreateProfile_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void NouveauSite_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NouveauSite_ButtonActionPerformed
         // TODO add your handling code here:
-        NewSite newSite = new NewSite();
-        newSite.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton3ActionPerformed
+        NouveauSite_Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+                try {
+                    new NewSite(current_User).setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(MainMenue_Admin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            }
+        });
+
+    }//GEN-LAST:event_NouveauSite_ButtonActionPerformed
+
+    private void SearchSites_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchSites_ButtonActionPerformed
         // TODO add your handling code here:
-        SearchSites displayfriame = new SearchSites();
-        displayfriame.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        
+        NouveauSite_Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                dispose();
+                new SearchSites(current_User).setVisible(true);
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        try {
-            // TODO add your handling code here:
-            new DisplaySites().setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(MainMenue_Admin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButton4ActionPerformed
+            }
+        });
+        
+    }//GEN-LAST:event_SearchSites_ButtonActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void AllSits_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AllSits_ButtonActionPerformed
+        
+        NouveauSite_Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                try {
+                    dispose();
+                    new DisplaySites(current_User).setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(MainMenue_Admin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            }
+        });
+    }//GEN-LAST:event_AllSits_ButtonActionPerformed
+
+    private void MyProfile_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MyProfile_ButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_MyProfile_ButtonActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void CreateProfile_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateProfile_ButtonActionPerformed
         // TODO add your handling code here:
         dispose();
         new NewUser().setVisible(true);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_CreateProfile_ButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,12 +293,12 @@ public class MainMenue_Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AllSits_Button;
+    private javax.swing.JButton CreateProfile_Button;
+    private javax.swing.JButton MyProfile_Button;
+    private javax.swing.JButton NouveauSite_Button;
+    private javax.swing.JButton SearchSites_Button;
     private javax.swing.JLabel UserInfo_Label;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

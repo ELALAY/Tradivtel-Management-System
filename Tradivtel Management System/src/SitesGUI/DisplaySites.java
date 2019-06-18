@@ -5,6 +5,8 @@ import MenueGUI.MainMenue_Normal;
 import Models.SiteInfo.Site;
 import Models.SiteInfo.SiteCollection;
 import Models.User.User;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -25,6 +27,7 @@ import javax.swing.table.DefaultTableModel;
  * @author hp
  */
 public class DisplaySites extends javax.swing.JFrame {
+
     User current_User;
     private SiteCollection sites;
     ResultSet rs;
@@ -40,6 +43,15 @@ public class DisplaySites extends javax.swing.JFrame {
         sites = new SiteCollection();
         TableDisplaySites_jTable.setEditingRow(0);
         TableDisplaySites_jTable.setEditingColumn(0);
+    }
+    
+    public DisplaySites(User current_User) throws SQLException {
+        initComponents();
+        DisplayAllSites();
+        sites = new SiteCollection();
+        TableDisplaySites_jTable.setEditingRow(0);
+        TableDisplaySites_jTable.setEditingColumn(0);
+        this.current_User = current_User;
     }
 
     public DisplaySites(ResultSet rs, User current_User) throws SQLException {
@@ -235,14 +247,20 @@ public class DisplaySites extends javax.swing.JFrame {
 
     private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
         // TODO add your handling code here:
-       if (current_User.getAccountType().equals("Admin")) {
-            dispose();
-            new MainMenue_Admin(current_User).setVisible(true);
-        } else {
-            dispose();
-            new MainMenue_Normal(current_User).setVisible(true);
-        }
-//.setvisible(true);
+        Home_Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if (current_User.getAccountType().equals("Admin")) {
+                    dispose();
+                    new MainMenue_Admin(current_User).setVisible(true);
+                } else {
+                    dispose();
+                    new MainMenue_Normal(current_User).setVisible(true);
+                }
+
+            }
+        });
     }//GEN-LAST:event_Home_ButtonActionPerformed
 
     /**

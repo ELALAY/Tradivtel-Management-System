@@ -39,15 +39,11 @@ public class NewSite extends javax.swing.JFrame {
         initComponents();
     }
 
-    public NewSite(ResultSet rs, User current_User) throws SQLException {
+    public NewSite(User current_User) throws SQLException {
         initComponents();
-        while (rs.next()) {
-            Client_TextFlied.setText(rs.getString("Client"));
-            Adress_TextField.setText(rs.getString("Adress"));
-            Code_Site_TextField.setText(rs.getString("Code_Site"));
-            this.current_site = current_site;
-            UserInfo_Label.setText(current_User.getUsername());
-        }
+        this.current_site = current_site;
+        UserInfo_Label.setText(current_User.getUsername());
+
     }
 
     /**
@@ -375,13 +371,20 @@ public class NewSite extends javax.swing.JFrame {
 
     private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
         // TODO add your handling code here:
-        if (current_User.getAccountType().equals("Admin")) {
-            dispose();
-            new MainMenue_Admin(current_User).setVisible(true);
-        } else {
-            dispose();
-            new MainMenue_Normal(current_User).setVisible(true);
-        }
+        Home_Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if (current_User.getAccountType().equals("Admin")) {
+                    dispose();
+                    new MainMenue_Admin(current_User).setVisible(true);
+                } else {
+                    dispose();
+                    new MainMenue_Normal(current_User).setVisible(true);
+                }
+
+            }
+        });
     }//GEN-LAST:event_Home_ButtonActionPerformed
 
     /**

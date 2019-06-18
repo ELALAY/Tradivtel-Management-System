@@ -50,7 +50,7 @@ public class UserCollection {
 
         if (passTemp.equals(password)) {
             loggedin = true;
-            int UserID = rs.getInt("UserID");
+            int UserID = rs.getInt(1);
             System.out.println(UserID);
             //int UserID = Integer.parseInt(UserId_S);
             String Username = rs.getString("Username");

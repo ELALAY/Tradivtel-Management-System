@@ -173,13 +173,21 @@ public class SearchSites extends javax.swing.JFrame {
 
     private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
         // TODO add your handling code here:
-        if (current_User.getAccountType().equals("Admin")) {
-            dispose();
-            new MainMenue_Admin(current_User).setVisible(true);
-        } else {
-            dispose();
-            new MainMenue_Normal(current_User).setVisible(true);
-        }
+        Home_Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if (current_User.getAccountType().equals("Admin")) {
+                    dispose();
+                    new MainMenue_Admin(current_User).setVisible(true);
+                } else {
+                    dispose();
+                    new MainMenue_Normal(current_User).setVisible(true);
+                }
+
+            }
+        });
+
     }//GEN-LAST:event_Home_ButtonActionPerformed
 
     private void SearchParam_ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchParam_ComboBoxActionPerformed
