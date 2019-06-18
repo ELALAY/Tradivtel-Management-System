@@ -44,7 +44,7 @@ public class DisplaySites extends javax.swing.JFrame {
         TableDisplaySites_jTable.setEditingRow(0);
         TableDisplaySites_jTable.setEditingColumn(0);
     }
-    
+
     public DisplaySites(User current_User) throws SQLException {
         initComponents();
         DisplayAllSites();
@@ -176,6 +176,8 @@ public class DisplaySites extends javax.swing.JFrame {
         Home_Button = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         UserInfo_Label = new javax.swing.JLabel();
+        Edit_Button = new javax.swing.JButton();
+        ShowSite_Button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -204,6 +206,19 @@ public class DisplaySites extends javax.swing.JFrame {
             }
         });
 
+        Edit_Button.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Edit_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/edit.png"))); // NOI18N
+        Edit_Button.setText("Edit");
+        Edit_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Edit_ButtonActionPerformed(evt);
+            }
+        });
+
+        ShowSite_Button.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ShowSite_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye.png"))); // NOI18N
+        ShowSite_Button.setText("Details");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -213,6 +228,10 @@ public class DisplaySites extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(Home_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(363, 363, 363)
+                        .addComponent(Edit_Button)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ShowSite_Button)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -240,7 +259,13 @@ public class DisplaySites extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(Home_Button))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Home_Button)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Edit_Button)
+                            .addComponent(ShowSite_Button))
+                        .addGap(21, 21, 21))))
         );
 
         pack();
@@ -263,6 +288,35 @@ public class DisplaySites extends javax.swing.JFrame {
             }
         });
     }//GEN-LAST:event_Home_ButtonActionPerformed
+
+    private void Edit_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Edit_ButtonActionPerformed
+        // TODO add your handling code here:
+
+        Edit_Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                DefaultTableModel model = (DefaultTableModel) TableDisplaySites_jTable.getModel();
+                int SelectedRowsIndex = TableDisplaySites_jTable.getSelectedRow();
+
+                String Code_Site = model.getValueAt(SelectedRowsIndex, 0).toString();
+                String Client = model.getValueAt(SelectedRowsIndex, 0).toString();
+                String Farend = model.getValueAt(SelectedRowsIndex, 0).toString();
+                String Azimut = model.getValueAt(SelectedRowsIndex, 0).toString();
+                String City = model.getValueAt(SelectedRowsIndex, 0).toString();
+                String Adress = model.getValueAt(SelectedRowsIndex, 0).toString();
+                String Longitude = model.getValueAt(SelectedRowsIndex, 0).toString();
+                String Latitude = model.getValueAt(SelectedRowsIndex, 0).toString();
+                String Site_Type = model.getValueAt(SelectedRowsIndex, 0).toString();
+                String Technology = model.getValueAt(SelectedRowsIndex, 0).toString();
+                String Site_Metrage_String = model.getValueAt(SelectedRowsIndex, 0).toString();
+                double Site_Metrage = Double.parseDouble(Site_Metrage_String);
+
+//                Site selected_Site = TableDisplaySites_jTable.getse
+            }
+        });
+
+    }//GEN-LAST:event_Edit_ButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -306,7 +360,9 @@ public class DisplaySites extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Edit_Button;
     private javax.swing.JButton Home_Button;
+    private javax.swing.JButton ShowSite_Button;
     private javax.swing.JTable TableDisplaySites_jTable;
     private javax.swing.JLabel UserInfo_Label;
     private javax.swing.JLabel jLabel1;
