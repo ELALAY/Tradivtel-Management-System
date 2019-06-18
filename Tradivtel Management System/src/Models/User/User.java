@@ -20,8 +20,8 @@ public class User {
     private String FirstName;
     private String LastName;
 
-    public User(String UserId, String Username, String Passwrord, String AccountType, String Email, String PhoneNumber, String FirstName, String LastName) {
-        this.UserID = UserID;
+    public User(int UserId, String Username, String Passwrord, String AccountType, String Email, String PhoneNumber, String FirstName, String LastName) {
+        this.UserID = UserId;
         this.Username = Username;
         this.Passwrord = Passwrord;
         this.AccountType = AccountType;

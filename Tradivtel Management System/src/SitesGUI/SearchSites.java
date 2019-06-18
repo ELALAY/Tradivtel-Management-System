@@ -42,7 +42,6 @@ public class SearchSites extends javax.swing.JFrame {
         SearchQuery_TextField = new javax.swing.JTextField();
         SearchParam_ComboBox = new javax.swing.JComboBox<>();
         Home_Button = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,7 +66,7 @@ public class SearchSites extends javax.swing.JFrame {
         });
 
         SearchParam_ComboBox.setFont(new java.awt.Font("Gill Sans MT", 3, 18)); // NOI18N
-        SearchParam_ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Code_Site", "Client", "Viille", "Type_Site" }));
+        SearchParam_ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Code_Site", "Client", "Ville", "Type_Site" }));
         SearchParam_ComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SearchParam_ComboBoxActionPerformed(evt);
@@ -80,10 +79,6 @@ public class SearchSites extends javax.swing.JFrame {
                 Home_ButtonActionPerformed(evt);
             }
         });
-
-        jLabel1.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Error Message here! To be removed afterwards");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,9 +100,7 @@ public class SearchSites extends javax.swing.JFrame {
                         .addGap(114, 114, 114))))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Home_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,11 +114,7 @@ public class SearchSites extends javax.swing.JFrame {
                     .addComponent(Search_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(SearchParam_ComboBox))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Home_Button)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                .addComponent(Home_Button))
         );
 
         pack();
@@ -153,9 +142,9 @@ public class SearchSites extends javax.swing.JFrame {
                 if (rs == null) {
                     JOptionPane.showMessageDialog(null, "Aucun resultat trouve");
                 } else {
-                    try { 
+                    try {
                         new DisplaySites(rs).setVisible(true);
-                        new SearchSites().setVisible(false);
+                        dispose();
                     } catch (SQLException ex) {
                         Logger.getLogger(SearchSites.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -222,6 +211,5 @@ public class SearchSites extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> SearchParam_ComboBox;
     private javax.swing.JTextField SearchQuery_TextField;
     private javax.swing.JButton Search_Button;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -35,8 +35,7 @@ public class SiteCollection {
     }
 
     public ResultSet SearchSites(String searchQuery, String searchParam) {
-        ResultSet rs = null;
-
+        
         try {
 
             myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/testtradivtel", "root", "");

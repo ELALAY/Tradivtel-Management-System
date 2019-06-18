@@ -46,8 +46,6 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="Home_Button" min="-2" pref="61" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="305" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -64,13 +62,7 @@
                   <Component id="SearchParam_ComboBox" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="94" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="Home_Button" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel1" min="-2" pref="27" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
+              <Component id="Home_Button" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -118,7 +110,7 @@
           <StringArray count="4">
             <StringItem index="0" value="Code_Site"/>
             <StringItem index="1" value="Client"/>
-            <StringItem index="2" value="Viille"/>
+            <StringItem index="2" value="Ville"/>
             <StringItem index="3" value="Type_Site"/>
           </StringArray>
         </Property>
@@ -139,15 +131,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Home_ButtonActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="0" red="ff" type="rgb"/>
-        </Property>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Error Message here! To be removed afterwards"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>

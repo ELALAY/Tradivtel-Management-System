@@ -1,5 +1,6 @@
 package SitesGUI;
 
+import MenueGUI.MainMenue_Normal;
 import Models.SiteInfo.Site;
 import Models.SiteInfo.SiteCollection;
 import java.sql.Connection;
@@ -35,6 +36,8 @@ public class DisplaySites extends javax.swing.JFrame {
         initComponents();
         DisplayAllSites();
         sites = new SiteCollection();
+        TableDisplaySites_jTable.setEditingRow(0);
+        TableDisplaySites_jTable.setEditingColumn(0);
     }
 
     public DisplaySites(ResultSet rs) throws SQLException {
@@ -42,6 +45,8 @@ public class DisplaySites extends javax.swing.JFrame {
         DisplaySitesResults(rs);
         sites = new SiteCollection();
         this.rs = rs;
+        TableDisplaySites_jTable.setEditingRow(0);
+        TableDisplaySites_jTable.setEditingColumn(0);
     }
 
     public void DisplaySitesResults(ResultSet rs) throws SQLException {
@@ -151,12 +156,17 @@ public class DisplaySites extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableDisplaySites_jTable = new javax.swing.JTable();
+        Home_Button = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Gill Sans MT", 3, 36)); // NOI18N
         jLabel1.setText("Tout les Sites");
 
+        TableDisplaySites_jTable.setAutoCreateRowSorter(true);
+        TableDisplaySites_jTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        TableDisplaySites_jTable.setFont(new java.awt.Font("Gill Sans MT", 3, 18)); // NOI18N
         TableDisplaySites_jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -169,17 +179,32 @@ public class DisplaySites extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Info General du Site", jScrollPane1);
 
+        Home_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/home.png"))); // NOI18N
+        Home_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Home_ButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(292, 292, 292)
-                .addComponent(jLabel1)
-                .addContainerGap(499, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(292, 292, 292)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(Home_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 673, Short.MAX_VALUE))
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator1)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -187,13 +212,28 @@ public class DisplaySites extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel1)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Home_Button))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
+        try {
+            // TODO add your handling code here:
+            dispose();
+            new MainMenue_Normal().setVisible(true);
+            new DisplaySites().setVisible(false);
+//.setvisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(DisplaySites.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_Home_ButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,9 +277,11 @@ public class DisplaySites extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Home_Button;
     private javax.swing.JTable TableDisplaySites_jTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
