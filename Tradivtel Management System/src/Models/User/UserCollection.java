@@ -59,4 +59,11 @@ public class UserCollection {
 
     }
 
+    public void NewUser() {
+        myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/testtradivtel", "root", "");
+        myStmt = myCon.createStatement();
+
+        String query = "SELECT * FROM users WHERE Username = ''";
+        rs = myStmt.executeQuery(query);
+    }
 }

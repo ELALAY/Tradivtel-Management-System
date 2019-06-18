@@ -1,3 +1,5 @@
+package Models.User;
+
 
 import MenueGUI.MainMenue_Normal;
 import Models.User.UserCollection;

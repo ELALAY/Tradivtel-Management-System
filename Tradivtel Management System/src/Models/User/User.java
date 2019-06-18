@@ -5,6 +5,8 @@
  */
 package Models.User;
 
+import java.util.Date;
+
 /**
  *
  * @author hp
@@ -19,8 +21,9 @@ public class User {
     private String PhoneNumber;
     private String FirstName;
     private String LastName;
+    private Date BirthDate;
 
-    public User(int UserId, String Username, String Passwrord, String AccountType, String Email, String PhoneNumber, String FirstName, String LastName) {
+    public User(int UserId, String Username, String Passwrord, String AccountType, String Email, String PhoneNumber, String FirstName, String LastName, Date birthDate) {
         this.UserID = UserId;
         this.Username = Username;
         this.Passwrord = Passwrord;
@@ -29,6 +32,7 @@ public class User {
         this.PhoneNumber = PhoneNumber;
         this.FirstName = FirstName;
         this.LastName = LastName;
+        this.BirthDate  = birthDate;
     }
 
     public int getUserID() {
