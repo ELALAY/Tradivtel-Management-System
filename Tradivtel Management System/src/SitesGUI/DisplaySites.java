@@ -52,6 +52,7 @@ public class DisplaySites extends javax.swing.JFrame {
         TableDisplaySites_jTable.setEditingRow(0);
         TableDisplaySites_jTable.setEditingColumn(0);
         this.current_User = current_User;
+        UserInfo_Label.setText(current_User.getUsername());
     }
 
     public DisplaySites(ResultSet rs, User current_User) throws SQLException {

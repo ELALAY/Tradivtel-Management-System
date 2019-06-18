@@ -5,6 +5,7 @@
  */
 package Models.User;
 
+import Models.SiteInfo.Site;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -31,7 +32,7 @@ public class UserCollection {
     public User LogIn(String username, String password) throws SQLException {
         boolean loggedin = false;
         User current_User = null;
-        
+
         System.out.println("in login");
         myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/testtradivtel", "root", "");
         myStmt = myCon.createStatement();
@@ -40,16 +41,7 @@ public class UserCollection {
         rs = myStmt.executeQuery(query);
         System.out.println("after querry");
 
-        String passTemp = "";
-        while (rs.next()) {
-            passTemp = rs.getString("Password");
-            System.out.println("here is the password from DB " + passTemp);
-        }
-
-        System.out.println("enteres pass " + password + " password from DB " + passTemp);
-
-        if (passTemp.equals(password)) {
-            loggedin = true;
+        if (rs.next()) {
             int UserID = rs.getInt(1);
             System.out.println(UserID);
             //int UserID = Integer.parseInt(UserId_S);
@@ -60,15 +52,20 @@ public class UserCollection {
             String phone = rs.getString("Phone");
             String Password = rs.getString("Password");
             String AccountType = rs.getString("AccountType");
-            
+
             //int UserId, String Username, String Passwrord, String AccountType, String Email, String PhoneNumber, String FirstName, String LastName
-            current_User = new User(UserID, Username, Password, AccountType, Email, phone, FirstName, LastName);
+            if (Password.equals(password)) {
+                current_User = new User(UserID, Username, Password, AccountType, Email, phone, FirstName, LastName);
+                loggedin = true;
+            } else loggedin = false;
         }
 
-        if (!loggedin || passTemp == "") {
+        if (!loggedin) {
             JOptionPane.showMessageDialog(null, "Invalid Email or Password!");
         }
         return current_User;
 
     }
+    
+    public ArrayList<Site> getAllUsers() {return null;}
 }

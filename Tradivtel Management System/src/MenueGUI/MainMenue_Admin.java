@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Models.User.User;
+import UsersGUI.FirstFrame_Login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -32,6 +33,7 @@ public class MainMenue_Admin extends javax.swing.JFrame {
     }
 
     public MainMenue_Admin(User current_User) {
+        initComponents();
         this.current_User = current_User;
         UserInfo_Label.setText(current_User.getUsername());
     }
@@ -49,13 +51,14 @@ public class MainMenue_Admin extends javax.swing.JFrame {
         SearchSites_Button = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         NouveauSite_Button = new javax.swing.JButton();
-        AllSits_Button = new javax.swing.JButton();
+        AllSites_Button = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         MyProfile_Button = new javax.swing.JButton();
         CreateProfile_Button = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         UserInfo_Label = new javax.swing.JLabel();
+        Logout_Button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,12 +88,12 @@ public class MainMenue_Admin extends javax.swing.JFrame {
             }
         });
 
-        AllSits_Button.setFont(new java.awt.Font("Gloss And Bloom", 3, 18)); // NOI18N
-        AllSits_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/search.png"))); // NOI18N
-        AllSits_Button.setText("Tout les Sites");
-        AllSits_Button.addActionListener(new java.awt.event.ActionListener() {
+        AllSites_Button.setFont(new java.awt.Font("Gloss And Bloom", 3, 18)); // NOI18N
+        AllSites_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/search.png"))); // NOI18N
+        AllSites_Button.setText("Tout les Sites");
+        AllSites_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AllSits_ButtonActionPerformed(evt);
+                AllSites_ButtonActionPerformed(evt);
             }
         });
 
@@ -124,6 +127,13 @@ public class MainMenue_Admin extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Creer un Profile");
 
+        Logout_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/login.png"))); // NOI18N
+        Logout_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Logout_ButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -147,15 +157,20 @@ public class MainMenue_Admin extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(AllSits_Button)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3)
-                            .addComponent(NouveauSite_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(UserInfo_Label)))
-                .addGap(13, 13, 13))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(AllSites_Button)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(NouveauSite_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(UserInfo_Label)))
+                        .addGap(13, 13, 13))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(Logout_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,7 +187,7 @@ public class MainMenue_Admin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SearchSites_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AllSits_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AllSites_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -181,11 +196,17 @@ public class MainMenue_Admin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NouveauSite_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(MyProfile_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(CreateProfile_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(CreateProfile_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Logout_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         pack();
@@ -210,22 +231,22 @@ public class MainMenue_Admin extends javax.swing.JFrame {
 
     private void SearchSites_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchSites_ButtonActionPerformed
         // TODO add your handling code here:
-        
-        NouveauSite_Button.addActionListener(new ActionListener() {
+
+        SearchSites_Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
                 dispose();
                 new SearchSites(current_User).setVisible(true);
 
             }
         });
-        
+
     }//GEN-LAST:event_SearchSites_ButtonActionPerformed
 
-    private void AllSits_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AllSits_ButtonActionPerformed
-        
-        NouveauSite_Button.addActionListener(new ActionListener() {
+    private void AllSites_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AllSites_ButtonActionPerformed
+
+        AllSites_Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -238,7 +259,7 @@ public class MainMenue_Admin extends javax.swing.JFrame {
 
             }
         });
-    }//GEN-LAST:event_AllSits_ButtonActionPerformed
+    }//GEN-LAST:event_AllSites_ButtonActionPerformed
 
     private void MyProfile_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MyProfile_ButtonActionPerformed
         // TODO add your handling code here:
@@ -246,9 +267,31 @@ public class MainMenue_Admin extends javax.swing.JFrame {
 
     private void CreateProfile_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateProfile_ButtonActionPerformed
         // TODO add your handling code here:
-        dispose();
-        new NewUser().setVisible(true);
+
+        CreateProfile_Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                dispose();
+                new NewUser(current_User).setVisible(true);
+
+            }
+        });
+
     }//GEN-LAST:event_CreateProfile_ButtonActionPerformed
+
+    private void Logout_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Logout_ButtonActionPerformed
+        // TODO add your handling code here:
+        Logout_Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                dispose();
+                new FirstFrame_Login().setVisible(true);
+
+            }
+        });
+    }//GEN-LAST:event_Logout_ButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,8 +336,9 @@ public class MainMenue_Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AllSits_Button;
+    private javax.swing.JButton AllSites_Button;
     private javax.swing.JButton CreateProfile_Button;
+    private javax.swing.JButton Logout_Button;
     private javax.swing.JButton MyProfile_Button;
     private javax.swing.JButton NouveauSite_Button;
     private javax.swing.JButton SearchSites_Button;

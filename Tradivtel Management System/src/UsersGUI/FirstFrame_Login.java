@@ -1,5 +1,6 @@
 package UsersGUI;
 
+import MenueGUI.MainMenue_Admin;
 import MenueGUI.MainMenue_Normal;
 import Models.User.User;
 import Models.User.UserCollection;
@@ -21,7 +22,7 @@ import javax.swing.JOptionPane;
  */
 public class FirstFrame_Login extends javax.swing.JFrame {
 
-    User current_User = null;
+    User current_User;
     UserCollection usersList;
 
     /**
@@ -150,10 +151,17 @@ public class FirstFrame_Login extends javax.swing.JFrame {
                 current_User = usersList.LogIn(username_in, password_in);
 
                 if (current_User != null) {
-                    dispose();
-                    new MainMenue_Normal(current_User).setVisible(true);
-                    
-                    
+
+                    if (current_User.getAccountType().equals("Admin")) {
+                        
+                        new MainMenue_Admin(current_User).setVisible(true);
+                        dispose();
+                    } else {
+                       
+                        new MainMenue_Normal(current_User).setVisible(true);
+                        dispose();
+                    }
+
                     Username_jtextfield.setText("");
                     Paasword_Jpassword.setText("");
                 }

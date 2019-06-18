@@ -34,6 +34,7 @@ public class SearchSites extends javax.swing.JFrame {
     }
 
     public SearchSites(User current_User) {
+        initComponents();
         this.current_User = current_User;
         UserInfo_Label.setText(current_User.getUsername());
     }

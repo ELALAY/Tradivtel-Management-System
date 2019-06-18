@@ -4,6 +4,7 @@ import Models.User.User;
 import SitesGUI.DisplaySites;
 import SitesGUI.SearchSites;
 import SitesGUI.NewSite;
+import UsersGUI.FirstFrame_Login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -31,6 +32,7 @@ public class MainMenue_Normal extends javax.swing.JFrame {
     }
 
     public MainMenue_Normal(User current_User) {
+        initComponents();
         this.current_User = current_User;
         UserInfo_Label.setText(current_User.getUsername());
     }
@@ -53,6 +55,7 @@ public class MainMenue_Normal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         MyProfile_Button = new javax.swing.JButton();
         UserInfo_Label = new javax.swing.JLabel();
+        Logout_Button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -108,6 +111,13 @@ public class MainMenue_Normal extends javax.swing.JFrame {
             }
         });
 
+        Logout_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/login.png"))); // NOI18N
+        Logout_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Logout_ButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -117,7 +127,7 @@ public class MainMenue_Normal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(MyProfile_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(SearchSites_Button, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
+                    .addComponent(SearchSites_Button, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -129,11 +139,14 @@ public class MainMenue_Normal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(UserInfo_Label)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(Logout_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(43, 43, 43)
                     .addComponent(jLabel4)
-                    .addContainerGap(253, Short.MAX_VALUE)))
+                    .addContainerGap(270, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,7 +154,7 @@ public class MainMenue_Normal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(UserInfo_Label)
                 .addGap(21, 21, 21)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(SearchSites_Button, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -154,7 +167,8 @@ public class MainMenue_Normal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NewSite_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(MyProfile_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Logout_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(49, 49, 49)
@@ -217,6 +231,19 @@ public class MainMenue_Normal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_MyProfile_ButtonActionPerformed
 
+    private void Logout_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Logout_ButtonActionPerformed
+        // TODO add your handling code here:
+        Logout_Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                dispose();
+                new FirstFrame_Login().setVisible(true);
+
+            }
+        });
+    }//GEN-LAST:event_Logout_ButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -259,6 +286,7 @@ public class MainMenue_Normal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AllSites_Button;
+    private javax.swing.JButton Logout_Button;
     private javax.swing.JButton MyProfile_Button;
     private javax.swing.JButton NewSite_Button;
     private javax.swing.JButton SearchSites_Button;
