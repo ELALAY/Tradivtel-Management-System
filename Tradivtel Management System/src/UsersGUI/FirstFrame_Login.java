@@ -4,12 +4,10 @@ import MenueGUI.MainMenue_Admin;
 import MenueGUI.MainMenue_Normal;
 import Models.User.User;
 import Models.User.UserCollection;
-import Models.User.UserCollection;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

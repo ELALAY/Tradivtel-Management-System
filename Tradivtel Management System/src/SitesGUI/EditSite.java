@@ -138,6 +138,8 @@ public class EditSite extends javax.swing.JFrame {
 
         Azimut_Label.setText("Azimut");
 
+        Save_Button.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Save_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/edit.png"))); // NOI18N
         Save_Button.setText("Edit");
         Save_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,6 +147,7 @@ public class EditSite extends javax.swing.JFrame {
             }
         });
 
+        Clear_Button.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Clear_Button.setText("Effacer");
         Clear_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -290,9 +293,9 @@ public class EditSite extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Clear_Button)
-                            .addComponent(Save_Button))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Save_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Clear_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(45, 45, 45))
                     .addComponent(Home_Button, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
@@ -331,6 +334,24 @@ public class EditSite extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_Clear_ButtonActionPerformed
 
+    private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
+        // TODO add your handling code here:
+        Home_Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if (current_User.getAccountType().equals("Admin")) {
+                    dispose();
+                    new MainMenue_Admin(current_User).setVisible(true);
+                } else {
+                    dispose();
+                    new MainMenue_Normal(current_User).setVisible(true);
+                }
+
+            }
+        });
+    }//GEN-LAST:event_Home_ButtonActionPerformed
+
     private void Save_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Save_ButtonActionPerformed
         // TODO add your handling code here:
         Save_Button.addActionListener(new ActionListener() {
@@ -357,9 +378,9 @@ public class EditSite extends javax.swing.JFrame {
                     System.out.println(metrageTemp);
 
                     String query = "INSERT INTO `sites` "
-                            + "(`Code_Site`, `Client`, `Ville`, `Adress`, `Type_Site`, `Longitude`, `Latitude`, `Technology`, `Farend`, `Azimut`, `Metrage`) "
-                            + "VALUES ('" + codeTemp + "', '" + clientTemp + "', '" + villeTemp + "', '" + adressTemp + "', '" + typeSiteTemp + "', '" + longitudeTemp + "', '" + latitudeTemp + "', '" + Technology + "', "
-                            + "'" + farendTemp + "', '" + AzimutTemp + "', '" + metrageTemp + "');";
+                    + "(`Code_Site`, `Client`, `Ville`, `Adress`, `Type_Site`, `Longitude`, `Latitude`, `Technology`, `Farend`, `Azimut`, `Metrage`) "
+                    + "VALUES ('" + codeTemp + "', '" + clientTemp + "', '" + villeTemp + "', '" + adressTemp + "', '" + typeSiteTemp + "', '" + longitudeTemp + "', '" + latitudeTemp + "', '" + Technology + "', "
+                    + "'" + farendTemp + "', '" + AzimutTemp + "', '" + metrageTemp + "');";
                     myStmt.execute(query);
 
                 } catch (SQLException ex) {
@@ -369,24 +390,6 @@ public class EditSite extends javax.swing.JFrame {
             }
         });
     }//GEN-LAST:event_Save_ButtonActionPerformed
-
-    private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
-        // TODO add your handling code here:
-        Home_Button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                if (current_User.getAccountType().equals("Admin")) {
-                    dispose();
-                    new MainMenue_Admin(current_User).setVisible(true);
-                } else {
-                    dispose();
-                    new MainMenue_Normal(current_User).setVisible(true);
-                }
-
-            }
-        });
-    }//GEN-LAST:event_Home_ButtonActionPerformed
 
     public void ShowSiteInfo() {
 

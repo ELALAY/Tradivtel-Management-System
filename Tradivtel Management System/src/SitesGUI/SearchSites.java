@@ -2,7 +2,6 @@ package SitesGUI;
 
 import MenueGUI.MainMenue_Admin;
 import MenueGUI.MainMenue_Normal;
-import Models.SiteInfo.Site;
 import Models.SiteInfo.SiteCollection;
 import Models.User.User;
 import java.awt.event.ActionEvent;
